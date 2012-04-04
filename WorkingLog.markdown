@@ -8,8 +8,11 @@ Working Log
 
 ##### Apr 2nd, 2012
 * Reading 17% [The Ruby Programming Language](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
-* Finish section 6.7 [blog building](http://guides.rubyonrails.org/getting_started.html)
+* Finish section 6.7 [list blogs](http://guides.rubyonrails.org/getting_started.html#listing-all-posts)
 
 ##### Apr 3rd, 2012
 * Reading up to 21% of [the Ruby Programming Language](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
-* Finish section 6.9 [blog building](http://guides.rubyonrails.org/getting_started.html).
+* Finish section 6.9 [blog building - new posts](http://guides.rubyonrails.org/getting_started.html#creating-new-posts).
+
+##### Apr 4nd, 2012
+* Finish section 9 [deleting comments](http://guides.rubyonrails.org/getting_started.html#deleting-associated-objects)
