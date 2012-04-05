@@ -16,3 +16,7 @@ Working Log
 
 ##### Apr 4nd, 2012
 * Finish section 9 [deleting comments](http://guides.rubyonrails.org/getting_started.html#deleting-associated-objects)
+
+##### Apr 5nd, 2012
+* Reading up to 32% of [the Ruby Programming Language](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+* Finish section 10 [security](http://guides.rubyonrails.org/getting_started.html#security)
