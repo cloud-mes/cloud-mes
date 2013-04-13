@@ -20,3 +20,6 @@ Working Log
 ##### Apr 15th, 2012
 * Reading up to 49% of [the Ruby Programming Language](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
 * Finish setting the [MacOSX 10.7.3 Ruby 1.9.3 enviroment](http://ruby-china.org/wiki/install_ruby_guide)
+
+##### Apr 14th, 2013
+* [cloud-MES web site](http://www.cloud-mes.com/) open.
