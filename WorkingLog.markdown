@@ -23,3 +23,7 @@ Working Log
 
 ##### Apr 14th, 2013
 * [cloud-MES web site](http://www.cloud-mes.com/) open.
+
+##### Sept 27th, 2015
+* Become [rails contributor](http://contributors.rubyonrails.org/contributors/eric-guo/commits) after 2.5 years.
+* Open cloud-mes organization in github
