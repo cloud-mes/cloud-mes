@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": [".bundle",".idea",".yardoc","log","tmp",".capistrano"],
+			"file_exclude_patterns": [".gitkeep","*.sublime-workspace","*.sqlite3*",".tags*",".gemtags"]
+		}
+	],
+  "settings":
+  {
+      "translate_tabs_to_spaces": true,
+      "trim_trailing_white_space_on_save": true,
+      "tab_size": 2
+  }
+}
