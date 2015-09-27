@@ -1,1 +1,9 @@
+*.gem
+*.rbc
+.bundle
+.config
+Gemfile.lock
+pkg
+tmp
+.ruby-version
 cloud-mes.sublime-workspace
