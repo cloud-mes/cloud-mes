@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
 
   s.files        = Dir['LICENSE.md', 'README.md', 'lib/**/*']
   s.require_path = 'lib'
-  s.requirements << 'none'
 
   s.author       = 'Eric Guo'
   s.email        = 'eric@cloud-mes.com'
