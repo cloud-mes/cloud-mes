@@ -16,4 +16,5 @@ Gem::Specification.new do |s|
   s.license      = 'BSD-3'
 
   s.add_dependency 'mes-core', version
+  s.add_dependency 'mes-modeler', version
 end
