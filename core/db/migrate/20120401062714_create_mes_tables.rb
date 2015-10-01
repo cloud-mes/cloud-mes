@@ -138,10 +138,12 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_column :users, :step_code_id, :integer
-    add_column :users, :shift,        :string
-    add_column :users, :operator,     :boolean
-    add_column :users, :qa,           :boolean
+    if table_exists? :users
+      add_column :users, :step_code_id, :integer
+      add_column :users, :shift,        :string
+      add_column :users, :admin,        :boolean
+      add_column :users, :qa,           :boolean
+    end
 
     add_index :operator_certifications, [:user_id, :cert_id], name: 'idx_on_operator_certifications'
 
