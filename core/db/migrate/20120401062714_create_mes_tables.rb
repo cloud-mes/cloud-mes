@@ -1,6 +1,7 @@
+# Make sure all name <= 30 char to support Oracle DB
 class CreateMesTables < ActiveRecord::Migration
   def change
-    create_table :factories do |t|
+    create_table :mes_factories do |t|
       t.string :factory_code, null: false
       t.string :factory_name
       t.string :factory_location
@@ -8,37 +9,37 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :factories, [:factory_code], name: 'idx_on_factories', unique: true
+    add_index :mes_factories, [:factory_code], name: 'idx_on_factories', unique: true
 
-    create_table :lot_types do |t|
+    create_table :mes_lot_types do |t|
       t.string :lot_type, null: false
       t.string :description
 
       t.timestamps null: false
     end
 
-    create_table :order_types do |t|
+    create_table :mes_order_types do |t|
       t.string :order_type, null: false
       t.string :description
 
       t.timestamps null: false
     end
 
-    create_table :hold_reasons do |t|
+    create_table :mes_hold_reasons do |t|
       t.string :hold_reason, null: false
       t.string :description
 
       t.timestamps null: false
     end
 
-    create_table :release_reasons do |t|
+    create_table :mes_release_reasons do |t|
       t.string :release_reason, null: false
       t.string :description
 
       t.timestamps null: false
     end
 
-    create_table :products do |t|
+    create_table :mes_products do |t|
       t.string  :product_code, null: false
       t.string  :description
       t.string  :capacity
@@ -68,9 +69,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :products, [:product_code], name: 'idx_product_code_on_products', unique: true
+    add_index :mes_products, [:product_code], name: 'idx_product_code_on_products', unique: true
 
-    create_table :order_type_settings do |t|
+    create_table :mes_order_type_settings do |t|
       # select field
       t.string  :order_type, null: false
       t.integer :product_id
@@ -80,9 +81,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :order_type_settings, [:order_type, :product_id], name: 'idx_wo_type_pt_on_wo_type_sets'
+    add_index :mes_order_type_settings, [:order_type, :product_id], name: 'idx_wo_type_pt_on_wo_type_sets'
 
-    create_table :low_yield_settings do |t|
+    create_table :mes_low_yield_settings do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string  :order_type
@@ -97,9 +98,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :low_yield_settings, [:order_type, :product_id], name: 'idx_wo_t_pt_on_low_yield_sets'
+    add_index :mes_low_yield_settings, [:order_type, :product_id], name: 'idx_wo_t_pt_on_low_yield_sets'
 
-    create_table :step_codes do |t|
+    create_table :mes_step_codes do |t|
       t.string  :name
       t.string  :description
       t.integer :step_type
@@ -113,7 +114,7 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :certs do |t|
+    create_table :mes_certs do |t|
       t.string  :certification_code, null: false
       t.string  :description
       t.integer :life_seconds
@@ -121,15 +122,15 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :certs, :certification_code, name: 'idx_cert_code_on_certs'
+    add_index :mes_certs, :certification_code, name: 'idx_cert_code_on_certs'
 
-    create_join_table :step_codes, :certs do |t|
+    create_join_table :step_codes, :certs, table_name: 'mes_certs_step_codes' do |t|
       t.index [:step_code_id, :cert_id], unique: true, name: 'idx_step_code_certs'
 
       t.timestamps
     end
 
-    create_table :operator_certifications do |t|
+    create_table :mes_operator_certifications do |t|
       t.integer  :user_id, null: false
       t.integer  :cert_id, null: false
       t.datetime :validation_start
@@ -145,9 +146,9 @@ class CreateMesTables < ActiveRecord::Migration
       add_column :users, :qa,           :boolean
     end
 
-    add_index :operator_certifications, [:user_id, :cert_id], name: 'idx_on_operator_certifications'
+    add_index :mes_operator_certifications, [:user_id, :cert_id], name: 'idx_on_operator_certifications'
 
-    create_table :step_process_settings do |t|
+    create_table :mes_step_process_settings do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string  :order_type
@@ -161,9 +162,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :step_process_settings, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_settings', unique: true
+    add_index :mes_step_process_settings, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_settings', unique: true
 
-    create_table :step_process_defects do |t|
+    create_table :mes_step_process_defects do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string  :order_type
@@ -172,24 +173,24 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :step_process_defects, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_defects', unique: true
+    add_index :mes_step_process_defects, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_defects', unique: true
 
-    create_table :step_process_defect_codes do |t|
+    create_table :mes_step_process_defect_codes do |t|
       t.integer :step_process_defect_id, null: false
       t.string  :defect_code
     end
 
-    add_index :step_process_defect_codes, [:step_process_defect_id], name: 'idx_on_step_pcs_defect_codes'
+    add_index :mes_step_process_defect_codes, [:step_process_defect_id], name: 'idx_on_step_pcs_defect_codes'
 
-    create_table :reject_codes, id: false, primary_key: 'reject_code' do |t|
+    create_table :mes_reject_codes, id: false, primary_key: 'reject_code' do |t|
       t.string :reject_code, null: false
       t.string :reject_type
       t.string :sap_location
     end
 
-    add_index :reject_codes, [:reject_code], name: 'idx_on_reject_codes', unique: true
+    add_index :mes_reject_codes, [:reject_code], name: 'idx_on_reject_codes', unique: true
 
-    create_table :step_process_rejects do |t|
+    create_table :mes_step_process_rejects do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string  :order_type
@@ -198,24 +199,24 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :step_process_rejects, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_rejects', unique: true
+    add_index :mes_step_process_rejects, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_rejects', unique: true
 
-    create_table :step_process_reject_codes do |t|
+    create_table :mes_step_process_reject_codes do |t|
       t.integer :step_process_reject_id, null: false
       t.string  :reject_code
     end
 
-    add_index :step_process_reject_codes, [:step_process_reject_id], name: 'idx_on_step_pcs_reject_codes'
+    add_index :mes_step_process_reject_codes, [:step_process_reject_id], name: 'idx_on_step_pcs_reject_codes'
 
-    create_table :bin_codes, id: false, primary_key: 'bin_code' do |t|
+    create_table :mes_bin_codes, id: false, primary_key: 'bin_code' do |t|
       t.string  :bin_code, null: false
       t.integer :bin_type
       t.string  :description
     end
 
-    add_index :bin_codes, [:bin_code], name: 'idx_on_bin_codes', unique: true
+    add_index :mes_bin_codes, [:bin_code], name: 'idx_on_bin_codes', unique: true
 
-    create_table :step_process_bins do |t|
+    create_table :mes_step_process_bins do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string  :order_type
@@ -224,16 +225,16 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :step_process_bins, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_bins', unique: true
+    add_index :mes_step_process_bins, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_bins', unique: true
 
-    create_table :step_process_bin_codes do |t|
+    create_table :mes_step_process_bin_codes do |t|
       t.integer :step_process_bin_id, null: false
       t.string :bin_code
     end
 
-    add_index :step_process_bin_codes, [:step_process_bin_id], name: 'idx_on_step_pcs_bin_codes'
+    add_index :mes_step_process_bin_codes, [:step_process_bin_id], name: 'idx_on_step_pcs_bin_codes'
 
-    create_table :inline_rework_next_steps do |t|
+    create_table :mes_inline_rework_next_steps do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string :defect_code, null: false
@@ -247,10 +248,10 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :inline_rework_next_steps, [:step_code_id, :defect_code, :from_step_code_id], name: 'idx_irns_on_step_defect_codes'
+    add_index :mes_inline_rework_next_steps, [:step_code_id, :defect_code, :from_step_code_id], name: 'idx_irns_on_step_defect_codes'
 
     # Direct Materials / Indirect Materials are all components
-    create_table :components do |t|
+    create_table :mes_components do |t|
       t.string   :component_code, null: false
       t.string   :description
       t.string   :component_type
@@ -270,9 +271,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :components, [:component_code], name: 'idx_comp_code_on_components', unique: true
+    add_index :mes_components, [:component_code], name: 'idx_comp_code_on_components', unique: true
 
-    create_table :component_containers do |t|
+    create_table :mes_component_containers do |t|
       t.string   :container_code, null: false
       t.integer  :component_id, null: false
       t.string   :sap_batch
@@ -290,10 +291,10 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :component_containers, [:container_code], name: 'idx_co_code_on_comp_containers'
-    add_index :component_containers, [:component_id], name: 'idx_comp_id_on_comp_containers'
+    add_index :mes_component_containers, [:container_code], name: 'idx_co_code_on_comp_containers'
+    add_index :mes_component_containers, [:component_id], name: 'idx_comp_id_on_comp_containers'
 
-    create_table :component_step_usage_settings do |t|
+    create_table :mes_component_step_usage_setup do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string  :product_componenet_category
@@ -306,9 +307,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :component_step_usage_settings, [:step_code_id], name: 'idx_step_code_on_comp_step_use'
+    add_index :mes_component_step_usage_setup, [:step_code_id], name: 'idx_step_code_on_comp_step_use'
 
-    create_table :machine_types do |t|
+    create_table :mes_machine_types do |t|
       t.string  :machine_type
       t.string  :description
       t.integer :calibration_frequency_seconds
@@ -318,7 +319,7 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :machines do |t|
+    create_table :mes_machines do |t|
       t.string   :machine_code
       t.string   :description
       t.integer  :machine_type_id, null: false
@@ -334,9 +335,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :machines, [:machine_type_id], name: 'idx_machine_type_on_machines'
+    add_index :mes_machines, [:machine_type_id], name: 'idx_machine_type_on_machines'
 
-    create_table :machine_mappings do |t|
+    create_table :mes_machine_mappings do |t|
       # select field
       t.integer :step_code_id, null: false
       t.string  :product_machine_category
@@ -347,9 +348,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :machine_mappings, [:step_code_id], name: 'idx_step_code_on_machine_map'
+    add_index :mes_machine_mappings, [:step_code_id], name: 'idx_step_code_on_machine_map'
 
-    create_table :tool_parts do |t|
+    create_table :mes_tool_parts do |t|
       t.string  :tool_part, null: false
       t.string  :description
       t.integer :calibration_frequency_seconds
@@ -362,7 +363,7 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :tools do |t|
+    create_table :mes_tools do |t|
       t.string   :tool_code
       t.integer  :tool_part_id, null: false
       t.integer  :status, default: 0 # defaults is idle status
@@ -380,9 +381,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :tools, [:tool_part_id], name: 'idx_tool_part_id_on_tools'
+    add_index :mes_tools, [:tool_part_id], name: 'idx_tool_part_id_on_tools'
 
-    create_table :tool_mappings do |t|
+    create_table :mes_tool_mappings do |t|
       # select field
       t.integer :step_code_id, null: false
       t.integer :machine_type_id, null: true
@@ -394,9 +395,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :tool_mappings, [:step_code_id, :machine_type_id], name: 'idx_on_tool_mappings'
+    add_index :mes_tool_mappings, [:step_code_id, :machine_type_id], name: 'idx_on_tool_mappings'
 
-    create_table :work_orders do |t|
+    create_table :mes_work_orders do |t|
       t.string  :work_order_name
       t.string  :order_type, null: false
       t.integer :product_id, null: false
@@ -415,9 +416,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :work_orders, [:product_id], name: 'idx_product_id_on_work_orders'
+    add_index :mes_work_orders, [:product_id], name: 'idx_product_id_on_work_orders'
 
-    create_table :workflows do |t|
+    create_table :mes_workflows do |t|
       # select field
       t.string :workflow_name, null: false
       t.string :description
@@ -425,9 +426,9 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :workflows, [:workflow_name], name: 'idx_on_workflows', unique: true
+    add_index :mes_workflows, [:workflow_name], name: 'idx_on_workflows', unique: true
 
-    create_table :steps do |t|
+    create_table :mes_steps do |t|
       t.integer :work_order_id
       t.integer :workflow_id
       t.integer :step_code_id, null: false
@@ -443,11 +444,11 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :steps, [:work_order_id], name: 'idx_work_order_id_on_steps'
-    add_index :steps, [:workflow_id], name: 'idx_workflow_id_on_steps'
-    add_index :steps, [:step_code_id], name: 'idx_step_code_id_on_steps'
+    add_index :mes_steps, [:work_order_id], name: 'idx_work_order_id_on_steps'
+    add_index :mes_steps, [:workflow_id], name: 'idx_workflow_id_on_steps'
+    add_index :mes_steps, [:step_code_id], name: 'idx_step_code_id_on_steps'
 
-    create_table :boms do |t|
+    create_table :mes_boms do |t|
       t.integer :work_order_id, null: false
       t.integer :component_id, null: false
       # No need to store component_code in table, will resolve to step_code_id when create.
@@ -459,10 +460,10 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :boms, [:work_order_id], name: 'idx_work_order_id_on_boms'
+    add_index :mes_boms, [:work_order_id], name: 'idx_work_order_id_on_boms'
 
     # This is only required if the component is containerized.
-    create_table :staged_components do |t|
+    create_table :mes_staged_components do |t|
       t.integer  :bom_id, null: false
       t.integer  :component_id, null: false
       t.string   :sap_batch
@@ -476,91 +477,91 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :staged_components, [:bom_id], name: 'idx_bom_id_on_stages'
-    add_index :staged_components, [:component_id], name: 'idx_component_id_on_stages'
-    add_index :staged_components, [:component_container_id], name: 'idx_comp_container_on_stages'
+    add_index :mes_staged_components, [:bom_id], name: 'idx_bom_id_on_stages'
+    add_index :mes_staged_components, [:component_id], name: 'idx_component_id_on_stages'
+    add_index :mes_staged_components, [:component_container_id], name: 'idx_comp_container_on_stages'
 
-    create_table :instructions do |t|
+    create_table :mes_instructions do |t|
       t.integer :step_id, null: false
       t.string  :text
       t.timestamps
     end
 
-    add_index :instructions, [:step_id], name: 'idx_step_id_on_instructions'
+    add_index :mes_instructions, [:step_id], name: 'idx_step_id_on_instructions'
 
-    create_table :step_allocated_components do |t|
+    create_table :mes_step_allocated_components do |t|
       t.integer :step_id, null: false
       t.integer :component_container_id, null: false
 
       t.timestamps
     end
 
-    add_index :step_allocated_components, [:step_id], name: 'idx_step_id_on_step_components'
+    add_index :mes_step_allocated_components, [:step_id], name: 'idx_step_id_on_step_components'
 
-    create_table :component_histories do |t|
+    create_table :mes_component_histories do |t|
       t.integer  :step_id, null: false
       t.integer  :user_id, null: false
       t.datetime :usage_time, null: false
     end
 
-    add_index :component_histories, [:step_id], name: 'idx_step_id_on_comp_histories'
+    add_index :mes_component_histories, [:step_id], name: 'idx_step_id_on_comp_histories'
 
-    create_table :component_history_details do |t|
+    create_table :mes_component_history_details do |t|
       t.integer :component_history_id, null: false
       t.integer :component_container_id, null: false
     end
 
-    add_index :component_history_details, [:component_history_id], name: 'idx_comp_history_on_details'
+    add_index :mes_component_history_details, [:component_history_id], name: 'idx_comp_history_on_details'
 
-    create_table :step_allocated_machines do |t|
+    create_table :mes_step_allocated_machines do |t|
       t.integer :step_id, null: false
       t.integer :machine_id, null: false
 
       t.timestamps
     end
 
-    add_index :step_allocated_machines, [:step_id], name: 'idx_step_id_on_step_machines'
+    add_index :mes_step_allocated_machines, [:step_id], name: 'idx_step_id_on_step_machines'
 
-    create_table :machine_histories do |t|
+    create_table :mes_machine_histories do |t|
       t.integer  :step_id, null: false
       t.integer  :user_id, null: false
       t.datetime :usage_time, null: false
     end
 
-    add_index :machine_histories, [:step_id], name: 'idx_step_id_on_machine_history'
+    add_index :mes_machine_histories, [:step_id], name: 'idx_step_id_on_machine_history'
 
-    create_table :machine_history_details do |t|
+    create_table :mes_machine_history_details do |t|
       t.integer    :machine_history_id, null: false
       t.integer    :machine_id, null: false
     end
 
-    add_index :machine_history_details, [:machine_history_id], name: 'idx_machine_history_on_details'
+    add_index :mes_machine_history_details, [:machine_history_id], name: 'idx_machine_history_on_details'
 
-    create_table :step_allocated_tools do |t|
+    create_table :mes_step_allocated_tools do |t|
       t.integer    :step_id, null: false
       t.integer    :tool_id, null: false
 
       t.timestamps
     end
 
-    add_index :step_allocated_tools, [:step_id], name: 'idx_step_id_on_step_tools'
+    add_index :mes_step_allocated_tools, [:step_id], name: 'idx_step_id_on_step_tools'
 
-    create_table :tool_histories do |t|
+    create_table :mes_tool_histories do |t|
       t.integer  :step_id, null: false
       t.integer  :user_id, null: false
       t.datetime :usage_time, null: false
     end
 
-    add_index :tool_histories, [:step_id], name: 'idx_step_id_on_tool_histories'
+    add_index :mes_tool_histories, [:step_id], name: 'idx_step_id_on_tool_histories'
 
-    create_table :tool_history_details do |t|
+    create_table :mes_tool_history_details do |t|
       t.integer  :tool_history_id, null: false
       t.integer  :tool_id, null: false
     end
 
-    add_index :tool_history_details, [:tool_history_id], name: 'idx_tool_history_id_on_details'
+    add_index :mes_tool_history_details, [:tool_history_id], name: 'idx_tool_history_id_on_details'
 
-    create_table :units do |t|
+    create_table :mes_units do |t|
       t.string  :unit_sn, null: false # unit serial number, document format spec 46, XXXXXXXX 8 char long 16 based number, auto increate at (0x)00001001
       t.integer :status, null: false, default: 0  # default 'in_queue'
       t.boolean :sap_confirmed
@@ -593,13 +594,13 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :units, :unit_sn, name: 'idx_unit_sn_on_units', unique: true
-    add_index :units, :work_order_id, name: 'idx_work_order_id_on_units'
-    add_index :units, :step_id, name: 'idx_step_id_on_units'
-    add_index :units, :product_id, name: 'idx_product_id_on_units'
+    add_index :mes_units, :unit_sn, name: 'idx_unit_sn_on_units', unique: true
+    add_index :mes_units, :work_order_id, name: 'idx_work_order_id_on_units'
+    add_index :mes_units, :step_id, name: 'idx_step_id_on_units'
+    add_index :mes_units, :product_id, name: 'idx_product_id_on_units'
 
 
-    create_table :lots do |t|
+    create_table :mes_lots do |t|
       t.string  :lot_no, null: false
       t.integer :status, null: false, default: 0  # default 'in_queue'
       t.integer :work_order_id
@@ -623,13 +624,13 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :lots, :lot_no, name: 'idx_lot_no_on_lots', unique: true
-    add_index :lots, :work_order_id, name: 'idx_work_order_id_on_lots'
-    add_index :lots, :workflow_id, name: 'idx_workflow_id_on_lots'
-    add_index :lots, :step_id, name: 'idx_step_id_on_lots'
-    add_index :lots, :product_id, name: 'idx_product_id_on_lots'
+    add_index :mes_lots, :lot_no, name: 'idx_lot_no_on_lots', unique: true
+    add_index :mes_lots, :work_order_id, name: 'idx_work_order_id_on_lots'
+    add_index :mes_lots, :workflow_id, name: 'idx_workflow_id_on_lots'
+    add_index :mes_lots, :step_id, name: 'idx_step_id_on_lots'
+    add_index :mes_lots, :product_id, name: 'idx_product_id_on_lots'
 
-    create_table :lot_rejects do |t|
+    create_table :mes_lot_rejects do |t|
       t.integer :lot_id, null: false
       t.string  :lot_no, null: false
       t.integer :step_id, null: false
@@ -641,11 +642,11 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :lot_rejects, :lot_no, name: 'idx_lot_no_on_lot_rejects'
-    add_index :lot_rejects, :lot_id, name: 'idx_lot_id_on_lot_rejects'
-    add_index :lot_rejects, :step_id, name: 'idx_step_id_on_lot_rejects'
+    add_index :mes_lot_rejects, :lot_no, name: 'idx_lot_no_on_lot_rejects'
+    add_index :mes_lot_rejects, :lot_id, name: 'idx_lot_id_on_lot_rejects'
+    add_index :mes_lot_rejects, :step_id, name: 'idx_step_id_on_lot_rejects'
 
-    create_table :lot_bins do |t|
+    create_table :mes_lot_bins do |t|
       t.integer :lot_id, null: false
       t.string  :lot_no, null: false
       t.integer :step_id, null: false
@@ -657,11 +658,11 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :lot_bins, :lot_no, name: 'idx_lot_no_on_lot_bins'
-    add_index :lot_bins, :lot_id, name: 'idx_lot_id_on_lot_bins'
-    add_index :lot_bins, :step_id, name: 'idx_step_id_on_lot_bins'
+    add_index :mes_lot_bins, :lot_no, name: 'idx_lot_no_on_lot_bins'
+    add_index :mes_lot_bins, :lot_id, name: 'idx_lot_id_on_lot_bins'
+    add_index :mes_lot_bins, :step_id, name: 'idx_step_id_on_lot_bins'
 
-    create_table :lot_combine_histories do |t|
+    create_table :mes_lot_combine_histories do |t|
       t.integer :lot_id, null: false
       t.string  :lot_no, null: false
       t.integer :step_id, null: false
@@ -674,11 +675,11 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :lot_combine_histories, :lot_no, name: 'idx_lot_no_on_comb_histories'
-    add_index :lot_combine_histories, :lot_id, name: 'idx_lot_id_on_comb_histories'
-    add_index :lot_combine_histories, :step_id, name: 'idx_step_id_on_comb_histories'
+    add_index :mes_lot_combine_histories, :lot_no, name: 'idx_lot_no_on_comb_histories'
+    add_index :mes_lot_combine_histories, :lot_id, name: 'idx_lot_id_on_comb_histories'
+    add_index :mes_lot_combine_histories, :step_id, name: 'idx_step_id_on_comb_histories'
 
-    create_table :lot_split_histories do |t|
+    create_table :mes_lot_split_histories do |t|
       t.integer :lot_id, null: false
       t.string  :lot_no, null: false
       t.integer :step_id, null: false
@@ -691,20 +692,20 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :lot_split_histories, :lot_no, name: 'idx_lot_no_on_split_histories'
-    add_index :lot_split_histories, :lot_id, name: 'idx_lot_id_on_split_histories'
-    add_index :lot_split_histories, :step_id, name: 'idx_step_id_on_split_histories'
+    add_index :mes_lot_split_histories, :lot_no, name: 'idx_lot_no_on_split_histories'
+    add_index :mes_lot_split_histories, :lot_id, name: 'idx_lot_id_on_split_histories'
+    add_index :mes_lot_split_histories, :step_id, name: 'idx_step_id_on_split_histories'
 
-    create_table :trays do |t|
+    create_table :mes_trays do |t|
       t.string  :tray_code, null: false
       t.integer :work_order_id, null: false
 
       t.timestamps
     end
 
-    add_index :trays, :tray_code, name: 'idx_tray_code_on_trays', unique: true
+    add_index :mes_trays, :tray_code, name: 'idx_tray_code_on_trays', unique: true
 
-    create_table :unit_basic_histories do |t|
+    create_table :mes_unit_basic_histories do |t|
       t.integer  :unit_id
       t.integer  :step_id
       t.integer  :step_sequence
@@ -737,13 +738,13 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :unit_basic_histories, :unit_sn, name: 'idx_unit_sn_on_unit_histories'
-    add_index :unit_basic_histories, :unit_id, name: 'idx_unit_id_on_unit_histories'
-    add_index :unit_basic_histories, :step_id, name: 'idx_step_id_on_unit_histories'
-    add_index :unit_basic_histories, :product_id, name: 'idx_pt_id_on_unit_histories'
-    add_index :unit_basic_histories, :work_order_id, name: 'idx_wo_id_on_unit_histories'
+    add_index :mes_unit_basic_histories, :unit_sn, name: 'idx_unit_sn_on_unit_histories'
+    add_index :mes_unit_basic_histories, :unit_id, name: 'idx_unit_id_on_unit_histories'
+    add_index :mes_unit_basic_histories, :step_id, name: 'idx_step_id_on_unit_histories'
+    add_index :mes_unit_basic_histories, :product_id, name: 'idx_pt_id_on_unit_histories'
+    add_index :mes_unit_basic_histories, :work_order_id, name: 'idx_wo_id_on_unit_histories'
 
-    create_table :lot_basic_histories do |t|
+    create_table :mes_lot_basic_histories do |t|
       t.integer  :lot_id
       t.string   :lot_no
       t.integer  :step_id
@@ -768,13 +769,13 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :lot_basic_histories, :lot_no, name: 'idx_lot_no_on_lot_histories'
-    add_index :lot_basic_histories, :lot_id, name: 'idx_unit_id_on_lot_histories'
-    add_index :lot_basic_histories, :step_id, name: 'idx_step_id_on_lot_histories'
-    add_index :lot_basic_histories, :product_id, name: 'idx_pt_id_on_lot_histories'
-    add_index :lot_basic_histories, :work_order_id, name: 'idx_wo_id_on_lot_histories'
+    add_index :mes_lot_basic_histories, :lot_no, name: 'idx_lot_no_on_lot_histories'
+    add_index :mes_lot_basic_histories, :lot_id, name: 'idx_unit_id_on_lot_histories'
+    add_index :mes_lot_basic_histories, :step_id, name: 'idx_step_id_on_lot_histories'
+    add_index :mes_lot_basic_histories, :product_id, name: 'idx_pt_id_on_lot_histories'
+    add_index :mes_lot_basic_histories, :work_order_id, name: 'idx_wo_id_on_lot_histories'
 
-    create_table :hold_release_histories do |t|
+    create_table :mes_hold_release_histories do |t|
       t.integer  :container_id
       t.string   :container_name
       t.string   :class_name
@@ -796,12 +797,12 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :hold_release_histories, :container_id, name: 'idx_container_id_on_uhlh'
-    add_index :hold_release_histories, :container_name, name: 'idx_container_name_on_uhlh'
-    add_index :hold_release_histories, :product_id, name: 'idx_product_id_on_uhlh'
-    add_index :hold_release_histories, :step_id, name: 'idx_step_id_on_uhlh'
+    add_index :mes_hold_release_histories, :container_id, name: 'idx_container_id_on_uhlh'
+    add_index :mes_hold_release_histories, :container_name, name: 'idx_container_name_on_uhlh'
+    add_index :mes_hold_release_histories, :product_id, name: 'idx_product_id_on_uhlh'
+    add_index :mes_hold_release_histories, :step_id, name: 'idx_step_id_on_uhlh'
 
-    create_table :step_hold_release_histories do |t|
+    create_table :mes_step_hold_release_historys do |t|
       t.integer  :step_id
       t.string   :step_code_name
       t.integer  :product_id
@@ -818,8 +819,8 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :step_hold_release_histories, :step_id, name: 'idx_step_id_on_shlh'
-    add_index :step_hold_release_histories, :step_code_name, name: 'idx_step_code_name_on_shlh'
-    add_index :step_hold_release_histories, :product_id, name: 'idx_product_id_on_shlh'
+    add_index :mes_step_hold_release_historys, :step_id, name: 'idx_step_id_on_shlh'
+    add_index :mes_step_hold_release_historys, :step_code_name, name: 'idx_step_code_name_on_shlh'
+    add_index :mes_step_hold_release_historys, :product_id, name: 'idx_product_id_on_shlh'
   end
 end
