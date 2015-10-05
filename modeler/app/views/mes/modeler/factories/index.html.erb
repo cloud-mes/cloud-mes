@@ -1,3 +1,30 @@
-<% @factories.each do |factory| -%>
-  <%= factory.factory_code %>
-<% end -%>
+<% if @factories.any? %>
+  <table class="table">
+    <thead>
+      <tr data-hook="factory_header">
+        <th><%= Mes.t(:factory_code) %></th>
+        <th><%= Mes.t(:factory_name) %></th>
+        <th><%= Mes.t(:factory_location) %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @factories.each do |factory|%>
+      <tr id="<%= modeler_dom_id factory %>" data-hook="factory_row">
+        <td><%= factory.factory_code %></td>
+        <td><%= factory.factory_name %></td>
+        <td><%= factory.factory_location %></td>
+        <td class="actions text-right">
+          <%= link_to_edit(factory, no_text: true) %>
+          <%= link_to_delete(factory, no_text: true) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::Factory)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) %>!
+  </div>
+<% end %>

@@ -202,35 +202,35 @@ class Mes::Modeler::ResourceController < Mes::Modeler::BaseController
 
   def new_object_url(options = {})
     if parent_data.present?
-      mes.new_polymorphic_url([:modeler, parent, model_class], options)
+      modeler.new_polymorphic_url([:modeler, parent, model_class], options)
     else
-      mes.new_polymorphic_url([:modeler, model_class], options)
+      modeler.new_polymorphic_url([:modeler, model_class], options)
     end
   end
 
   def edit_object_url(object, options = {})
     if parent_data.present?
-      mes.send "edit_modeler_#{resource.model_name}_#{resource.object_name}_url",
+      modeler.send "edit_modeler_#{resource.model_name}_#{resource.object_name}_url",
                  parent, object, options
     else
-      mes.send "edit_modeler_#{resource.object_name}_url", object, options
+      modeler.send "edit_modeler_#{resource.object_name}_url", object, options
     end
   end
 
   def object_url(object = nil, options = {})
     target = object ? object : @object
     if parent_data.present?
-      mes.send "modeler_#{resource.model_name}_#{resource.object_name}_url", parent, target, options
+      modeler.send "modeler_#{resource.model_name}_#{resource.object_name}_url", parent, target, options
     else
-      mes.send "modeler_#{resource.object_name}_url", target, options
+      modeler.send "modeler_#{resource.object_name}_url", target, options
     end
   end
 
   def collection_url(options = {})
     if parent_data.present?
-      mes.polymorphic_url([:modeler, parent, model_class], options)
+      modeler.polymorphic_url([:modeler, parent, model_class], options)
     else
-      mes.polymorphic_url([:modeler, model_class], options)
+      modeler.polymorphic_url([:modeler, model_class], options)
     end
   end
 

@@ -1,4 +1,5 @@
 class Mes::Modeler::BaseController < Mes::BaseController
+  helper 'mes/modeler/navigation'
   layout '/mes/layouts/modeler'
 
   protected
