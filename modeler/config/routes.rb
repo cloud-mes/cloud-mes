@@ -1,3 +1,5 @@
 Mes::Modeler::Engine.routes.draw do
-  resources :factories, :lot_types
+  namespace :modeler, path: '/' do
+    resources :factories, :lot_types
+  end
 end
