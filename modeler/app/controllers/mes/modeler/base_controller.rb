@@ -1,4 +1,4 @@
-class Mes::Modeler::BaseController < ActionController::Base
+class Mes::Modeler::BaseController < Mes::BaseController
   layout '/mes/layouts/modeler'
 
   protected
