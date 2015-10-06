@@ -25,19 +25,40 @@ module CloudMes
     end
 
     def add_routes
-      insert_into_file File.join('config', 'routes.rb'), :after => "Rails.application.routes.draw do\n" do
-        %Q(  # This line mounts Cloud-MES's routes at the root of your application.
+      insert_into_file 'config/routes.rb', after: "Rails.application.routes.draw do\n" do
+        %q(  # This line mounts Cloud-MES's routes at the root of your application.
   # This means, any requests to URLs such as /modeler/factories, will go to Mes::Modeler::FactoriesController.
   # If you would like to change where this engine is mounted, simply change the :at option to something different.
-  mount Mes::Modeler::Engine, :at => '/modeler'
+  mount Mes::Modeler::Engine, at: '/modeler'
 )
       end
 
-      unless options[:quiet]
-        puts "*" * 65
-        puts "Following line added to your application's config/routes.rb file:"
-        puts " "
-        puts "    mount Mes::Modeler::Engine, :at => '/modeler'"
+      return if options[:quiet]
+      puts '*' * 65
+      puts "Following line added to your application's config/routes.rb file:"
+      puts ' '
+      puts "    mount Mes::Modeler::Engine, at: '/modeler'"
+    end
+
+    def setup_assets
+      %w(javascripts stylesheets images).each do |path|
+        empty_directory "vendor/assets/#{path}/mes/modeler" if defined? Mes::Modeler || Rails.env.test?
+      end
+
+      if defined? Mes::Modeler || Rails.env.test?
+        template 'vendor/assets/javascripts/mes/modeler/all.js'
+        template 'vendor/assets/stylesheets/mes/modeler/all.css'
+      end
+    end
+
+    def add_jquery_reference
+      return unless defined? Mes::Modeler || Rails.env.test?
+
+      gem 'jquery-rails'
+      insert_into_file 'app/assets/javascripts/application.js', after: "//\n" do
+        %q(//= require jquery
+//= require jquery_ujs
+)
       end
     end
   end

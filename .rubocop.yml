@@ -26,3 +26,6 @@ Metrics/MethodLength:
 
 Style/IndentationWidth:
   Width: 2
+
+Style/UnneededPercentQ:
+  Enabled: false
