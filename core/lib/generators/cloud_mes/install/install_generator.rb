@@ -50,16 +50,5 @@ module CloudMes
         template 'vendor/assets/stylesheets/mes/modeler/all.css'
       end
     end
-
-    def add_jquery_reference
-      return unless defined? Mes::Modeler || Rails.env.test?
-
-      gem 'jquery-rails'
-      insert_into_file 'app/assets/javascripts/application.js', after: "//\n" do
-        %q(//= require jquery
-//= require jquery_ujs
-)
-      end
-    end
   end
 end

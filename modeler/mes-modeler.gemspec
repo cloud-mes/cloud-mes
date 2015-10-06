@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'Rakefile', 'LICENSE.MD']
 
-  s.add_dependency 'bootstrap-sass',  '~> 3.3.5'
   s.add_dependency 'jquery-rails',    '~> 4.0.5'
+  s.add_dependency 'bootstrap-sass',  '~> 3.3.5'
 
   s.add_development_dependency 'sqlite3'
 end
