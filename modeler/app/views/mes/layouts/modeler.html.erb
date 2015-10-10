@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+<head data-hook="modeler_page_head">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= modeler_title %></title>
+  <%= stylesheet_link_tag 'mes/modeler', media: "all" %>
+  <%= javascript_include_tag 'mes/modeler' %>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+</head>
+<body>
+<header class="header <%= current_mes_user ? "logged-in" : "logged-out" %>">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="navbar-header col-sm-3 col-md-2">
+          <%= link_to('Cloud MES', Mes::Modeler.modeler_path, class: 'logo navbar-brand') -%>
+          <% if current_mes_user %>
+            <span class="navbar-toggle" id="sidebar-toggle">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </span>
+          <% end %>
+        </div>
+
+        <% if current_mes_user %>
+          <div class="col-sm-9 col-md-10">
+            <div class="navbar-right" data-hook="modeler_login_navigation_bar"></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<%= yield %>
+
+</body>
+</html>

@@ -4,6 +4,9 @@ en:
     are_you_sure_delete: Are you sure you want to delete this record?
     delete: Delete
     edit: Edit
+    factories: Factories
     factory_code: Factory Code
     factory_location: Factory Location
     factory_name: Factory Name
+    lot_types: Lot Types
+    modeler: Modeler
