@@ -13,14 +13,14 @@ class Mes::Modeler::ResourceController < Mes::Modeler::BaseController
 
   def new
     invoke_callbacks(:new_action, :before)
-    respond_with(@object) do |format|
+    respond_to do |format|
       format.html { render layout: !request.xhr? }
       format.js   { render layout: false } if request.xhr?
     end
   end
 
   def edit
-    respond_with(@object) do |format|
+    respond_to do |format|
       format.html { render layout: !request.xhr? }
       format.js   { render layout: false } if request.xhr?
     end
@@ -32,13 +32,13 @@ class Mes::Modeler::ResourceController < Mes::Modeler::BaseController
     if @object.save
       invoke_callbacks(:create, :after)
       flash[:success] = flash_message_for(@object, :successfully_created)
-      respond_with(@object) do |format|
+      respond_to do |format|
         format.html { redirect_to location_after_save }
         format.js   { render layout: false }
       end
     else
       invoke_callbacks(:create, :fails)
-      respond_with(@object) do |format|
+      respond_to do |format|
         format.html do
           flash.now[:error] = @object.errors.full_messages.join(', ')
           render action: 'new'
@@ -53,13 +53,13 @@ class Mes::Modeler::ResourceController < Mes::Modeler::BaseController
     if @object.update_attributes(permitted_resource_params)
       invoke_callbacks(:update, :after)
       flash[:success] = flash_message_for(@object, :successfully_updated)
-      respond_with(@object) do |format|
+      respond_to do |format|
         format.html { redirect_to location_after_save }
         format.js { render layout: false }
       end
     else
       invoke_callbacks(:update, :fails)
-      respond_with(@object) do |format|
+      respond_to do |format|
         format.html do
           flash.now[:error] = @object.errors.full_messages.join(', ')
           render action: 'edit'
@@ -86,13 +86,13 @@ class Mes::Modeler::ResourceController < Mes::Modeler::BaseController
     if @object.destroy
       invoke_callbacks(:destroy, :after)
       flash[:success] = flash_message_for(@object, :successfully_removed)
-      respond_with(@object) do |format|
+      respond_to do |format|
         format.html { redirect_to location_after_destroy }
         format.js   { render partial: 'mes/modeler/shared/destroy' }
       end
     else
       invoke_callbacks(:destroy, :fails)
-      respond_with(@object) do |format|
+      respond_to do |format|
         format.html { redirect_to location_after_destroy }
       end
     end
