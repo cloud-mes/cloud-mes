@@ -16,14 +16,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="navbar-header col-sm-3 col-md-2">
-          <%= link_to('Cloud MES', Mes::Modeler.modeler_path, class: 'logo navbar-brand') -%>
-          <% if current_mes_user %>
+          <%= link_to('Cloud MES', Mes::Modeler.modeler_path, class: 'logo navbar-brand') %>
+          <% if current_mes_user -%>
             <span class="navbar-toggle" id="sidebar-toggle">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </span>
-          <% end %>
+          <% end -%>
         </div>
 
         <% if current_mes_user %>
@@ -48,13 +48,26 @@
         </li>
       </ul>
     </div>
+    <div class="<%= cookies['sidebar-minimized'] == 'true' ? 'col-sm-12 col-md-12 sidebar-collapsed' : 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2' %>" id="main-part">
 
-  <div class="<%= cookies['sidebar-minimized'] == 'true' ? 'col-sm-12 col-md-12 sidebar-collapsed' : 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2' %>" id="main-part">
+      <% if content_for?(:page_title) || content_for?(:page_actions) -%>
+        <div class="content-header page-header">
+          <div class="row">
+            <% if content_for?(:page_title) -%>
+              <h1 class="col-sm-<%= content_for?(:page_actions) ? '6' : '12' %>"><%= yield :page_title -%></h1>
+            <% end -%>
 
-    <%= yield %>
+            <% if content_for?(:page_actions) -%>
+              <div class="page-actions col-sm-6" data-hook="toolbar">
+                <%= yield :page_actions %>
+              </div>
+            <% end -%>
+          </div>
+        </div>
+      <% end -%>
 
-  </div>
-
+      <%= yield %>
+    </div>
   </div>
 </div>
 <div data-hook="modeler_footer_scripts"></div>

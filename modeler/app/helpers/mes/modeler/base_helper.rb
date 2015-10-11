@@ -3,6 +3,11 @@ module Mes::Modeler::BaseHelper
     dom_id(record, 'modeler')
   end
 
+  I18N_PLURAL_MANY_COUNT = 2.1
+  def plural_resource_name(resource_class)
+    resource_class.model_name.human(count: I18N_PLURAL_MANY_COUNT)
+  end
+
   def modeler_title
     if content_for? :title
       yield :title
