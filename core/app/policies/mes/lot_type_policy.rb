@@ -1,2 +1,2 @@
-class Mes::LotTypePolicy < Mes::BasePolicy
+class Mes::LotTypePolicy < Mes::Policy::Base
 end

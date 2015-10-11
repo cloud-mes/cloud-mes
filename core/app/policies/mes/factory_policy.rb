@@ -1,2 +1,2 @@
-class Mes::FactoryPolicy < Mes::BasePolicy
+class Mes::FactoryPolicy < Mes::Policy::Base
 end

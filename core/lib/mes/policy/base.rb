@@ -1,4 +1,4 @@
-class Mes::BasePolicy
+class Mes::Policy::Base
   attr_reader :user, :record
 
   def initialize(user, record)
