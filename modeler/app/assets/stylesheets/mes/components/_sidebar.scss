@@ -1,0 +1,120 @@
+#main-sidebar {
+  background-color: lighten($gray-lighter, 5);
+  border-right: 1px solid darken($gray-lighter, 5);
+  bottom: 0;
+  display: block;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto; // Scrollable contents if viewport is shorter than content.
+  padding: 0;
+  position: fixed;
+  top: $navbar-height + 2px;
+  z-index: 1000;
+
+  a {
+    -moz-font-feature-settings: "kern" 1;
+    -webkit-font-feature-settings: "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  ul.nav-sidebar {
+    > li {
+      border-bottom: 1px solid $gray-lighter;
+
+      > a {
+        color: $gray;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 15px;
+        text-transform: uppercase;
+
+        .glyphicon {
+          font-size: 18px;
+          padding-right: 5px;
+          vertical-align: bottom;
+        }
+
+        .glyphicon.pull-right {
+          font-size: 8px;
+          line-height: 2;
+          color: $gray-light;
+          position: absolute;
+          right: 5px;
+          top: 50%;
+          margin-top: -8px;
+        }
+      }
+    }
+  }
+
+  ul.nav.nav-pills {
+    background-color: #000;
+    border-top: 1px solid $gray-lighter;
+
+    li {
+      a {
+        font-size: 12px;
+        padding: 5px 15px;
+
+        &:hover {
+          border-radius: 0;
+        }
+      }
+
+      &.selected {
+        a {
+          color: $brand-success;
+        }
+      }
+    }
+  }
+}
+
+#wrapper.sidebar-minimized #main-sidebar {
+  overflow: visible;
+  width: 50px;
+
+  li {
+    &:hover, &.menu-active {
+      background-color: $gray-lighter;
+    }
+  }
+
+  .icon-link, [data-toggle="collapse"] {
+    text-align: center;
+
+    .glyphicon {
+      padding: 0;
+    }
+
+    .text, .glyphicon-chevron-left, .glyphicon-chevron-down {
+      display: none;
+    }
+  }
+
+  ul.collapse.in {
+    display: none;
+  }
+
+  .submenu-active {
+    display: block !important;
+    height: auto !important;
+    position: fixed;
+    top: $navbar-height + 2px;
+    bottom: 0;
+    left: 50px;
+    padding: 0;
+    z-index: 1000;
+    overflow-x: hidden;
+    overflow-y: auto; // Scrollable contents if viewport is shorter than content
+    min-width: 180px;
+    visibility: visible;
+    background-color: lighten($gray-lighter, 5);
+    border-top: 0;
+    border-right: 1px solid darken($gray-lighter, 5);
+    padding-top: 5px;
+  }
+}

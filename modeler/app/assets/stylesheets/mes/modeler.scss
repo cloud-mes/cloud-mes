@@ -2,6 +2,8 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
-body {
-  padding-top: $navbar-height + 2px;
-}
+@import 'components/sidebar';
+@import 'components/main';
+@import 'components/navigation';
+
+@import 'shared/base';
