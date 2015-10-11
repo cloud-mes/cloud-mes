@@ -1,0 +1,16 @@
+<div data-hook="modeler_factory_form_fields">
+  <%= f.field_container :factory_code, :class => ['form-group'] do %>
+    <%= f.label :factory_code, Mes.t(:factory_code) %>
+    <%= f.text_field :factory_code, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :factory_name, :class => ['form-group'] do %>
+    <%= f.label :factory_name, Mes.t(:factory_name) %><br>
+    <%= f.text_field :factory_name, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :factory_location, :class => ['form-group'] do %>
+    <%= f.label :factory_location, Mes.t(:factory_name) %><br>
+    <%= f.text_field :factory_location, :class => 'form-control' %>
+  <% end %>
+</div>

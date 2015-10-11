@@ -8,6 +8,9 @@
   <%= stylesheet_link_tag 'mes/modeler', media: "all" %>
   <%= javascript_include_tag 'mes/modeler' %>
   <%= csrf_meta_tags %>
+  <%= javascript_tag do %>
+    <%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" %>
+  <% end %>
   <%= yield :head %>
 </head>
 <body>
@@ -66,7 +69,12 @@
         </div>
       <% end -%>
 
-      <%= yield %>
+      <div class="row">
+        <%= flash_alert(flash) %>
+        <div class="col-sm-12" id="content" data-hook>
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

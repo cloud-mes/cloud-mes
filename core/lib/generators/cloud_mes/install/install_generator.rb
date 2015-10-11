@@ -29,7 +29,7 @@ module CloudMes
         %q(  # This line mounts Cloud-MES's routes at the root of your application.
   # This means, any requests to URLs such as /modeler/factories, will go to Mes::Modeler::FactoriesController.
   # If you would like to change where this engine is mounted, simply change the :at option to something different.
-  mount Mes::Modeler::Engine, at: '/modeler'
+  mount Mes::Core::Engine, at: '/modeler'
 )
       end
 

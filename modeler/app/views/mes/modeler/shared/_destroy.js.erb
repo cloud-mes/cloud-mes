@@ -1,0 +1,8 @@
+<% success = flash.discard(:success)
+if success %>
+  show_flash('success', "<%= j success %>");
+<% end %>
+
+<% if error = flash.discard(:error) %>
+  show_flash('warning', "<%= j error %>");
+<% end %>

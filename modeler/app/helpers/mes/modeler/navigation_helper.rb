@@ -33,6 +33,14 @@ module Mes::Modeler::NavigationHelper
     link_to(text.html_safe, url, options)
   end
 
+  def button(text, icon_name = nil, button_type = 'submit', options = {})
+    if icon_name
+      icon = content_tag(:span, '', class: "glyphicon glyphicon-#{icon_name}")
+      text.insert(0, icon + ' ')
+    end
+    button_tag(text.html_safe, options.merge(type: button_type, class: "btn btn-primary #{options[:class]}"))
+  end
+
   def button_link_to(text, url, html_options = {})
     if html_options[:method] &&
        html_options[:method].to_s.downcase != 'get' &&

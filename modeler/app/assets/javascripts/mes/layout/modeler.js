@@ -36,5 +36,46 @@ jQuery(function($) {
       $(this).find('ul.nav').removeClass('submenu-active');
     }
   });
+
+  // Make flash messages dissapear
+  setTimeout('$(".alert-auto-dissapear").slideUp()', 7000);
 });
 
+var show_flash = function(type, message) {
+  var flash_div = $('.flash.' + type);
+  if (flash_div.length === 0) {
+    flash_div = $('<div class="alert alert-' + type + '" />');
+    $('#content').prepend(flash_div);
+  }
+  flash_div.html(message).show().delay(15000).slideUp();
+};
+
+$(document).ready(function(){
+  $('body').on('click', '.delete-resource', function() {
+    var el = $(this);
+    if (confirm(el.data("confirm"))) {
+      $.ajax({
+        type: 'POST',
+        url: $(this).prop("href"),
+        data: {
+          _method: 'delete',
+          authenticity_token: AUTH_TOKEN
+        },
+        dataType: 'script',
+        success: function(response) {
+          el.parents("tr").fadeOut('hide', function() {
+            $(this).remove();
+          });
+        },
+        error: function(response, textStatus, errorThrown) {
+          show_flash('error', response.responseText);
+        }
+      });
+    }
+    return false;
+  });
+
+  $('a.dismiss').click(function() {
+    $(this).parent().fadeOut();
+  });
+});

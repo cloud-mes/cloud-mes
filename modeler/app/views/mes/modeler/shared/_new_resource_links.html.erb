@@ -1,0 +1,5 @@
+<div class="form-actions" data-hook="buttons">
+  <%= button Mes.t('actions.create'), 'ok', 'submit', {class: 'btn-success'} %>
+  <span class="or"><%= Mes.t(:or) %></span>
+  <%= button_link_to Mes.t('actions.cancel'), collection_url, :icon => 'remove' %>
+</div>
