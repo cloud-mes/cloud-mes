@@ -18,13 +18,16 @@ en:
     factory_code: Factory Code
     factory_location: Factory Location
     factory_name: Factory Name
+    hold_reason: Hold Reason
     lot_type: Lot Type
     lot_types: Lot Types
     modeler: Modeler
     name: Name
     new_factory: New Factory
+    new_hold_reason: New Hold Reason
     new_lot_type: New Lot Type
     new_order_type: New Order Type
+    no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
     or: or
     order_type: Order Type
