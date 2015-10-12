@@ -1,0 +1,36 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::OrderType) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_order_type), new_object_url, class: "btn-success", icon: 'plus' %>
+<% end if policy(Mes::OrderType).create? -%>
+
+<% if @order_types.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="order_type_header">
+        <th><%= Mes.t(:order_type) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_types.each do |order_type| -%>
+      <tr id="<%= modeler_dom_id order_type %>" data-hook="order_type_row">
+        <td><%= order_type.order_type %></td>
+        <td><%= order_type.description %></td>
+        <td class="actions text-right">
+          <%= link_to_edit(order_type, no_text: true) if policy(Mes::OrderType).edit? %>
+          <%= link_to_delete(order_type, no_text: true) if policy(Mes::OrderType).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::OrderType)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::OrderType).create? %>!
+  </div>
+<% end -%>

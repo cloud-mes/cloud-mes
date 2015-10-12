@@ -1,0 +1,12 @@
+<% content_for :page_title do %>
+  <%= Mes.t(:new_order_type) %>
+<% end %>
+
+<%= render :partial => 'mes/modeler/shared/error_messages', :locals => { :target => @order_type } %>
+
+<%= form_for [:modeler, @order_type] do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'mes/modeler/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

@@ -10,6 +10,7 @@ en:
     delete: Delete
     description: Description
     edit: Edit
+    editing_resource: 'Editing %{resource}'
     errors_prohibited_this_record_from_being_saved:
       one: 1 error prohibited this record from being saved
       other: ! '%{count} errors prohibited this record from being saved'
@@ -23,7 +24,10 @@ en:
     name: Name
     new_factory: New Factory
     new_lot_type: New Lot Type
+    new_order_type: New Order Type
     not_found: ! '%{resource} is not found'
+    or: or
+    order_type: Order Type
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
     successfully_updated: ! '%{resource} has been successfully updated!'

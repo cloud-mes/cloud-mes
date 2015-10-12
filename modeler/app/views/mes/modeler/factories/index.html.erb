@@ -23,8 +23,8 @@
         <td><%= factory.factory_name -%></td>
         <td><%= factory.factory_location -%></td>
         <td class="actions text-right">
-          <%= link_to_edit(factory, no_text: true) %>
-          <%= link_to_delete(factory, no_text: true) %>
+          <%= link_to_edit(factory, no_text: true) if policy(Mes::Factory).edit? %>
+          <%= link_to_delete(factory, no_text: true) if policy(Mes::Factory).destroy? %>
         </td>
       </tr>
       <% end -%>
@@ -33,6 +33,6 @@
 <% else -%>
   <div class="alert alert-info no-objects-found">
     <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::Factory)) %>,
-    <%= link_to(Mes.t(:add_one), new_object_url) %>!
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::Factory).create? %>!
   </div>
 <% end -%>
