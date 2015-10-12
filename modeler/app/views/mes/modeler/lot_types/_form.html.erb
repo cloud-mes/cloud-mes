@@ -1,0 +1,11 @@
+<div data-hook="modeler_factory_form_fields">
+  <%= f.field_container :lot_type, :class => ['form-group'] do %>
+    <%= f.label :lot_type, Mes.t(:lot_type) %>
+    <%= f.text_field :lot_type, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+</div>
