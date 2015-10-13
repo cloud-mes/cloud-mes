@@ -1,0 +1,12 @@
+<% content_for :page_title do %>
+  <%= Mes.t(:editing_resource, resource: Mes::ReleaseReason.model_name.human) %>
+<% end %>
+
+<%= render :partial => 'mes/modeler/shared/error_messages', :locals => { :target => @release_reason } %>
+
+<%= form_for [:modeler, @release_reason] do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'mes/modeler/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>

@@ -1,0 +1,36 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::ReleaseReason) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_release_reason), new_object_url, class: "btn-success", icon: 'plus' %>
+<% end if policy(Mes::ReleaseReason).create? -%>
+
+<% if @release_reasons.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="release_reason_header">
+        <th><%= Mes.t(:release_reason) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @release_reasons.each do |release_reason| -%>
+      <tr id="<%= modeler_dom_id release_reason %>" data-hook="release_reason_row">
+        <td><%= release_reason.release_reason %></td>
+        <td><%= release_reason.description %></td>
+        <td class="actions text-right">
+          <%= link_to_edit(release_reason, no_text: true) if policy(Mes::ReleaseReason).edit? %>
+          <%= link_to_delete(release_reason, no_text: true) if policy(Mes::ReleaseReason).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::ReleaseReason)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::ReleaseReason).create? %>!
+  </div>
+<% end -%>

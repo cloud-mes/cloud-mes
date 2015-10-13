@@ -27,10 +27,12 @@ en:
     new_hold_reason: New Hold Reason
     new_lot_type: New Lot Type
     new_order_type: New Order Type
+    new_release_reason: New Release Reason
     no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
     or: or
     order_type: Order Type
+    release_reason: Release Reason
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
     successfully_updated: ! '%{resource} has been successfully updated!'

@@ -1,0 +1,11 @@
+<div data-hook="modeler_order_type_form_fields">
+  <%= f.field_container :release_reason, :class => ['form-group'] do %>
+    <%= f.label :release_reason, Mes.t(:release_reason) %>
+    <%= f.text_field :release_reason, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+</div>
