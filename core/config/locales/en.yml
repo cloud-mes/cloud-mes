@@ -28,11 +28,15 @@ en:
     new_lot_type: New Lot Type
     new_order_type: New Order Type
     new_release_reason: New Release Reason
+    new_reject_code: New Reject Code
     no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
     or: or
     order_type: Order Type
     release_reason: Release Reason
+    reject_code: Reject Code
+    reject_type: Reject Type
+    sap_location: SAP Location
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
     successfully_updated: ! '%{resource} has been successfully updated!'

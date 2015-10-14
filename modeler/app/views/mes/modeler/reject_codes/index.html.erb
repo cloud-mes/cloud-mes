@@ -1,0 +1,38 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::RejectCode) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_reject_code), new_object_url, class: "btn-success", icon: 'plus' %>
+<% end if policy(Mes::RejectCode).create? -%>
+
+<% if @reject_codes.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="reject_code_header">
+        <th><%= Mes.t(:reject_code) -%></th>
+        <th><%= Mes.t(:reject_type) -%></th>
+        <th><%= Mes.t(:sap_location) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reject_codes.each do |reject_code| -%>
+      <tr id="<%= modeler_dom_id reject_code %>" data-hook="reject_code_row">
+        <td><%= reject_code.reject_code %></td>
+        <td><%= reject_code.reject_type %></td>
+        <td><%= reject_code.sap_location %></td>
+        <td class="actions text-right">
+          <%= link_to_edit(reject_code, no_text: true) if policy(Mes::RejectCode).edit? %>
+          <%= link_to_delete(reject_code, no_text: true) if policy(Mes::RejectCode).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::RejectCode)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::RejectCode).create? %>!
+  </div>
+<% end -%>
