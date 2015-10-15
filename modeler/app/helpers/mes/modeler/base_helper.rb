@@ -5,7 +5,7 @@ module Mes::Modeler::BaseHelper
     flash_class = 'danger' if flash[:error]
     flash_class = 'info' if flash[:notice]
     flash_class = 'success' if flash[:success]
-    flash_div = content_tag(:div, message, class: "alert alert-#{flash_class} alert-auto-dissapear")
+    flash_div = content_tag(:div, message, class: "alert alert-#{flash_class} alert-auto-disappear")
     content_tag(:div, flash_div, class: 'col-md-12')
   end
 

@@ -37,8 +37,8 @@ jQuery(function($) {
     }
   });
 
-  // Make flash messages dissapear
-  setTimeout('$(".alert-auto-dissapear").slideUp()', 7000);
+  // Make flash messages disappear
+  setTimeout('$(".alert-auto-disappear").slideUp()', 7000);
 });
 
 var show_flash = function(type, message) {
