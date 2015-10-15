@@ -1,0 +1,38 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::BinCode) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_bin_code), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::BinCode).create? -%>
+
+<% if @bin_codes.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="bin_code_header">
+        <th><%= Mes.t(:bin_code) -%></th>
+        <th><%= Mes.t(:bin_type) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bin_codes.each do |bin_code| -%>
+      <tr id="<%= modeler_dom_id bin_code %>" data-hook="bin_code_row">
+        <td><%= bin_code.bin_code %></td>
+        <td><%= bin_code.bin_type %></td>
+        <td><%= bin_code.description %></td>
+        <td class="actions text-right">
+          <%= link_to_edit(bin_code, no_text: true) if policy(Mes::BinCode).edit? %>
+          <%= link_to_delete(bin_code, no_text: true) if policy(Mes::BinCode).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::BinCode)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::BinCode).create? %>!
+  </div>
+<% end -%>

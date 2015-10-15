@@ -7,6 +7,8 @@ en:
     add_one: Add One
     are_you_sure: Are you sure?
     are_you_sure_delete: Are you sure you want to delete this record?
+    bin_code: Bin Code
+    bin_type: Bin Type
     delete: Delete
     description: Description
     edit: Edit
@@ -23,6 +25,7 @@ en:
     lot_types: Lot Types
     modeler: Modeler
     name: Name
+    new_bin_code: New Bin Code
     new_factory: New Factory
     new_hold_reason: New Hold Reason
     new_lot_type: New Lot Type
