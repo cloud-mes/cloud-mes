@@ -1,0 +1,50 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::StepCode) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_step_code), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::StepCode).create? -%>
+
+<% if @step_codes.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="step_code_header">
+        <th><%= Mes.t(:name) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th><%= Mes.t(:step_type) -%></th>
+        <th><%= Mes.t(:notes) -%></th>
+        <th><%= Mes.t(:for_inline_rework) -%></th>
+        <th><%= Mes.t(:tray_generation) -%></th>
+        <th><%= Mes.t(:tray_management) -%></th>
+        <th><%= Mes.t(:machine_required) -%></th>
+        <th><%= Mes.t(:can_auto_start_current_step) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @step_codes.each do |step_code| -%>
+      <tr id="<%= modeler_dom_id step_code %>" data-hook="step_code_row">
+        <td><%= step_code.name %></td>
+        <td><%= step_code.description %></td>
+        <td><%= step_code.step_type %></td>
+        <td><%= step_code.notes %></td>
+        <td><%= step_code.for_inline_rework %></td>
+        <td><%= step_code.tray_generation %></td>
+        <td><%= step_code.tray_management %></td>
+        <td><%= step_code.machine_required %></td>
+        <td><%= step_code.can_auto_start_current_step %></td>
+        <td class="actions text-right">
+          <%= link_to_edit(step_code, no_text: true) if policy(Mes::StepCode).edit? %>
+          <%= link_to_delete(step_code, no_text: true) if policy(Mes::StepCode).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::StepCode)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::StepCode).create? %>!
+  </div>
+<% end -%>

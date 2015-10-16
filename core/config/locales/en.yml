@@ -9,6 +9,7 @@ en:
     are_you_sure_delete: Are you sure you want to delete this record?
     bin_code: Bin Code
     bin_type: Bin Type
+    can_auto_start_current_step: Can auto start current step
     delete: Delete
     description: Description
     edit: Edit
@@ -20,9 +21,11 @@ en:
     factory_code: Factory Code
     factory_location: Factory Location
     factory_name: Factory Name
+    for_inline_rework: For Inline Rework
     hold_reason: Hold Reason
     lot_type: Lot Type
     lot_types: Lot Types
+    machine_required: Machine Required
     modeler: Modeler
     name: Name
     new_bin_code: New Bin Code
@@ -32,14 +35,19 @@ en:
     new_order_type: New Order Type
     new_release_reason: New Release Reason
     new_reject_code: New Reject Code
+    new_step_code: New Step Code
     no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
+    notes: Notes
     or: or
     order_type: Order Type
     release_reason: Release Reason
     reject_code: Reject Code
     reject_type: Reject Type
     sap_location: SAP Location
+    step_type: Step Type
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
     successfully_updated: ! '%{resource} has been successfully updated!'
+    tray_generation: Tray Generation
+    tray_management: Tray Management

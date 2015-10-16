@@ -1,0 +1,12 @@
+<% content_for :page_title do %>
+  <%= Mes.t(:new_step_code) %>
+<% end %>
+
+<%= render :partial => 'mes/modeler/shared/error_messages', :locals => { :target => @step_code } %>
+
+<%= form_for [:modeler, @step_code] do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'mes/modeler/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

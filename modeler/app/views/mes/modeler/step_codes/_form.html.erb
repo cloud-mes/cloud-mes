@@ -1,0 +1,56 @@
+<div data-hook="modeler_step_code_form_fields">
+  <%= f.field_container :name, :class => ['form-group'] do %>
+    <%= f.label :name, Mes.t(:name) %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, class: ['form-group'] do %>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 2, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :step_type, :class => ['form-group'] do %>
+    <%= f.label :step_type, Mes.t(:step_type) %>
+    <%= f.select :step_type , options_for_select(Mes::StepCode.step_types.keys, @step_code.step_type), {}, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :notes, class: ['form-group'] do %>
+    <%= f.label :notes %>
+    <%= f.text_area :notes, rows: 4, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :for_inline_rework, class: ['checkbox'] do %>
+    <%= f.label :for_inline_rework do %>
+      <%= f.check_box :for_inline_rework %>
+      <%= Mes.t(:for_inline_rework) %>
+    <% end %>
+  <% end %>
+
+  <%= f.field_container :tray_generation, class: ['checkbox'] do %>
+    <%= f.label :tray_generation do %>
+      <%= f.check_box :tray_generation %>
+      <%= Mes.t(:tray_generation) %>
+    <% end %>
+  <% end %>
+
+  <%= f.field_container :tray_management, class: ['checkbox'] do %>
+    <%= f.label :tray_management do %>
+      <%= f.check_box :tray_management %>
+      <%= Mes.t(:tray_management) %>
+    <% end %>
+  <% end %>
+
+  <%= f.field_container :machine_required, class: ['checkbox'] do %>
+    <%= f.label :machine_required do %>
+      <%= f.check_box :machine_required %>
+      <%= Mes.t(:machine_required) %>
+    <% end %>
+  <% end %>
+
+  <%= f.field_container :can_auto_start_current_step, class: ['checkbox'] do %>
+    <%= f.label :can_auto_start_current_step do %>
+      <%= f.check_box :can_auto_start_current_step %>
+      <%= Mes.t(:can_auto_start_current_step) %>
+    <% end %>
+  <% end %>
+</div>
