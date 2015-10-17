@@ -29,11 +29,11 @@
         <td><%= step_code.description %></td>
         <td><%= step_code.step_type %></td>
         <td><%= step_code.notes %></td>
-        <td><%= step_code.for_inline_rework %></td>
-        <td><%= step_code.tray_generation %></td>
-        <td><%= step_code.tray_management %></td>
-        <td><%= step_code.machine_required %></td>
-        <td><%= step_code.can_auto_start_current_step %></td>
+        <td><%= tag :span, class: 'glyphicon glyphicon-ok', title: Mes.t(:for_inline_rework) if step_code.for_inline_rework? %></td>
+        <td><%= tag :span, class: 'glyphicon glyphicon-ok', title: Mes.t(:tray_generation) if step_code.tray_generation? %></td>
+        <td><%= tag :span, class: 'glyphicon glyphicon-ok', title: Mes.t(:tray_management) if step_code.tray_management? %></td>
+        <td><%= tag :span, class: 'glyphicon glyphicon-ok', title: Mes.t(:machine_required) if step_code.machine_required? %></td>
+        <td><%= tag :span, class: 'glyphicon glyphicon-ok', title: Mes.t(:can_auto_start_current_step) if step_code.can_auto_start_current_step? %></td>
         <td class="actions text-right">
           <%= link_to_edit(step_code, no_text: true) if policy(Mes::StepCode).edit? %>
           <%= link_to_delete(step_code, no_text: true) if policy(Mes::StepCode).destroy? %>
