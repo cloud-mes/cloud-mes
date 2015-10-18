@@ -1,4 +1,21 @@
 module Mes::Modeler::NavigationHelper
+  # Single main menu item
+  def main_menu_item(text, url: nil, icon: nil)
+    link_to url, 'data-toggle': 'collapse', 'data-parent': '#sidebar' do
+      content_tag(:span, nil, class: "glyphicon glyphicon-#{icon}") +
+        content_tag(:span, " #{text}", class: 'text') +
+        content_tag(:span, nil, class: 'glyphicon glyphicon-chevron-left pull-right')
+    end
+  end
+
+  # Main menu tree menu
+  def main_menu_tree(text, icon: nil, sub_menu: nil, url: '#')
+    content_tag :li, class: 'sidebar-menu-item' do
+      main_menu_item(text, url: url, icon: icon) +
+        render(partial: "mes/modeler/shared/sub_menu/#{sub_menu}")
+    end
+  end
+
   def link_to_new(resource)
     options[:data] = { action: 'new' }
     options[:class] = 'btn btn-success btn-sm'
@@ -64,6 +81,16 @@ module Mes::Modeler::NavigationHelper
       end
 
       link_to(text.html_safe, url, html_options)
+    end
+  end
+
+  def sidebar_menu_item(link_text, url, options = {})
+    is_active = url.ends_with?(controller.controller_name) ||
+                url.ends_with?("#{controller.controller_name}/edit") ||
+                url.ends_with?("#{controller.controller_name.singularize}/edit")
+    options.merge!(class: is_active ? 'active' : nil)
+    content_tag(:li, options) do
+      link_to(link_text, url)
     end
   end
 end

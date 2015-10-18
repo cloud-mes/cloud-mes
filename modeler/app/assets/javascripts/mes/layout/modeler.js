@@ -3,6 +3,15 @@ jQuery(function($) {
   // Add some tips
   $('.with-tip').tooltip();
 
+  $('#main-sidebar').find('[data-toggle="collapse"]').on('click', function() {
+    if($(this).find('.glyphicon-chevron-left').length === 1) {
+      $(this).find('.glyphicon-chevron-left').removeClass('glyphicon-chevron-left').addClass('glyphicon-chevron-down');
+    }
+    else {
+      $(this).find('.glyphicon-chevron-down').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-left');
+    }
+  });
+
   $('#sidebar-toggle').on('click', function(){
     var wrapper = $('#wrapper');
     var main    = $('#main-part');
@@ -36,6 +45,14 @@ jQuery(function($) {
       $(this).find('ul.nav').removeClass('submenu-active');
     }
   });
+
+  // Main menu active item submenu show
+  var active_item = $('#main-sidebar').find('.active');
+  active_item.parent().addClass('in');
+  active_item.parent().prev()
+    .find('.glyphicon-chevron-left')
+    .removeClass('glyphicon-chevron-left')
+    .addClass('glyphicon-chevron-down');
 
   // Make flash messages disappear
   setTimeout('$(".alert-auto-disappear").slideUp()', 7000);

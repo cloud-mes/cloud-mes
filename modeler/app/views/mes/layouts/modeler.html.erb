@@ -43,12 +43,7 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 hidden-xs sidebar" id="main-sidebar" data-hook="modeler_tabs">
       <ul class="nav nav-sidebar">
-        <li class="sidebar-menu-item">
-          <a title="" data-original-title="" class="icon-link with-tip" href="/factories">
-            <span class="glyphicon glyphicon-wrench"></span>
-            <span class="text">Factories</span>
-          </a>
-        </li>
+        <%= main_menu_tree Mes.t(:configurations), icon: 'wrench', sub_menu: 'configuration', url: '#sidebar-configuration' %>
       </ul>
     </div>
     <div class="<%= cookies['sidebar-minimized'] == 'true' ? 'col-sm-12 col-md-12 sidebar-collapsed' : 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2' %>" id="main-part">
