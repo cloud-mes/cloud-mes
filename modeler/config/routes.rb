@@ -3,7 +3,7 @@ Mes::Core::Engine.routes.draw do
     resources :factories, :lot_types, :order_types,
               :hold_reasons, :release_reasons,
               :reject_codes, :bin_codes,
-              :step_codes,
+              :step_codes, :machine_types,
               except: :show
   end
 end

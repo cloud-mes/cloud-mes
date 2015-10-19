@@ -1,0 +1,26 @@
+<div data-hook="modeler_machine_type_form_fields">
+  <%= f.field_container :machine_type, :class => ['form-group'] do %>
+    <%= f.label :machine_type, Mes.t(:machine_type) %>
+    <%= f.text_field :machine_type, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :calibration_frequency_seconds, :class => ['form-group'] do %>
+    <%= f.label :calibration_frequency_seconds, Mes.t(:calibration_frequency_seconds) %><br>
+    <%= f.text_field :calibration_frequency_seconds, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :small_pm_frequency_seconds, :class => ['form-group'] do %>
+    <%= f.label :small_pm_frequency_seconds, Mes.t(:small_pm_frequency_seconds) %><br>
+    <%= f.text_field :small_pm_frequency_seconds, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :large_pm_frequency_seconds, :class => ['form-group'] do %>
+    <%= f.label :large_pm_frequency_seconds, Mes.t(:large_pm_frequency_seconds) %><br>
+    <%= f.text_field :large_pm_frequency_seconds, :class => 'form-control' %>
+  <% end %>
+</div>
