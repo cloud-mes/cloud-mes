@@ -1,6 +1,6 @@
 require 'mes-core'
 require 'jquery/rails'
-require 'jquery-cookie-rails/rails'
+require 'js_cookie_rails'
 require 'bootstrap-sass'
 require 'mes/modeler/engine'
 

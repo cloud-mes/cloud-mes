@@ -1,5 +1,15 @@
-jQuery(function($) {
+var show_flash = function(type, message) {
+  'use strict';
+  var flash_div = $('.flash.' + type);
+  if (flash_div.length === 0) {
+    flash_div = $('<div class="alert alert-' + type + '" />');
+    $('#content').prepend(flash_div);
+  }
+  flash_div.html(message).show().delay(10000).slideUp();
+};
 
+$(document).ready(function(){
+  'use strict';
   // Add some tips
   $('.with-tip').tooltip();
 
@@ -21,14 +31,14 @@ jQuery(function($) {
       main
         .removeClass('col-sm-12 col-md-12 sidebar-collapsed')
         .addClass('col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2');
-      $.cookie('sidebar-minimized', 'false');
+      Cookies.set('sidebar-minimized', 'false', { expires: 7 });
     }
     else {
       wrapper.addClass('sidebar-minimized');
       main
         .removeClass('col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2')
         .addClass('col-sm-12 col-md-12 sidebar-collapsed');
-      $.cookie('sidebar-minimized', 'true');
+      Cookies.set('sidebar-minimized', 'true', { expires: 7 });
     }
   });
 
@@ -56,18 +66,7 @@ jQuery(function($) {
 
   // Make flash messages disappear
   setTimeout('$(".alert-auto-disappear").slideUp()', 7000);
-});
 
-var show_flash = function(type, message) {
-  var flash_div = $('.flash.' + type);
-  if (flash_div.length === 0) {
-    flash_div = $('<div class="alert alert-' + type + '" />');
-    $('#content').prepend(flash_div);
-  }
-  flash_div.html(message).show().delay(15000).slideUp();
-};
-
-$(document).ready(function(){
   $('body').on('click', '.delete-resource', function() {
     var el = $(this);
     if (confirm(el.data("confirm"))) {

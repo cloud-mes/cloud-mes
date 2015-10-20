@@ -1,0 +1,12 @@
+{
+  "strict": true,
+  "bitwise": true,
+  "curly": true,
+  "indent": 2,
+  "jquery": true,
+  "predef": [
+    "AUTH_TOKEN",
+    "Cookies"
+  ],
+  "white": true
+}
