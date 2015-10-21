@@ -44,6 +44,7 @@ en:
     new_release_reason: New Release Reason
     new_reject_code: New Reject Code
     new_step_code: New Step Code
+    new_workflow: New Workflow
     no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
     notes: Notes
@@ -65,3 +66,6 @@ en:
     successfully_updated: ! '%{resource} has been successfully updated!'
     tray_generation: Tray Generation
     tray_management: Tray Management
+    workflow: Workflow
+    workflows: Workflows
+    workflow_name: Workflow Name
