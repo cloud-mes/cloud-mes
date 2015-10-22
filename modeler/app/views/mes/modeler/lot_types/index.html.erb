@@ -1,36 +1,6 @@
-<% content_for :page_title do -%>
-  <%= plural_resource_name(Mes::LotType) -%>
-<% end -%>
-
-<% content_for :page_actions do -%>
-  <%= button_link_to Mes.t(:new_lot_type), new_object_url, class: 'btn-success', icon: 'plus' %>
-<% end if policy(Mes::LotType).create? -%>
-
-<% if @lot_types.any? -%>
-  <table class="table">
-    <thead>
-      <tr data-hook="lot_type_header">
-        <th><%= Mes.t(:lot_type) -%></th>
-        <th><%= Mes.t(:description) -%></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @lot_types.each do |lot_type| -%>
-      <tr id="<%= modeler_dom_id lot_type %>" data-hook="lot_type_row">
-        <td><%= lot_type.lot_type %></td>
-        <td><%= lot_type.description %></td>
-        <td class="actions text-right">
-          <%= link_to_edit(lot_type, no_text: true) if policy(Mes::LotType).edit? %>
-          <%= link_to_delete(lot_type, no_text: true) if policy(Mes::LotType).destroy? %>
-        </td>
-      </tr>
-      <% end -%>
-    </tbody>
-  </table>
-<% else -%>
-  <div class="alert alert-info no-objects-found">
-    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::LotType)) %>,
-    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::LotType).create? %>!
-  </div>
-<% end -%>
+<%= render partial: 'mes/modeler/shared/named_types/index', locals: {
+  page_title: plural_resource_name(Mes::LotType),
+  new_button_text: Mes.t(:new_lot_type),
+  resource_name: plural_resource_name(Mes::LotType),
+  resource: Mes::LotType
+} %>

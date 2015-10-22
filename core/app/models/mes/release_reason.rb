@@ -1,5 +1,4 @@
 module Mes
-  class ReleaseReason < ActiveRecord::Base
-    validates :release_reason, presence: true, uniqueness: true
+  class ReleaseReason < Mes::NamedType
   end
 end

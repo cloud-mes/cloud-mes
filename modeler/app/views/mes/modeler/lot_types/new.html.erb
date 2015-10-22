@@ -1,12 +1,4 @@
-<% content_for :page_title do %>
-  <%= Mes.t(:new_lot_type) %>
-<% end %>
-
-<%= render :partial => 'mes/modeler/shared/error_messages', :locals => { :target => @lot_type } %>
-
-<%= form_for [:modeler, @lot_type] do |f| %>
-  <fieldset>
-    <%= render :partial => 'form', :locals => { :f => f } %>
-    <%= render :partial => 'mes/modeler/shared/new_resource_links' %>
-  </fieldset>
-<% end %>
+<%= render partial: 'mes/modeler/shared/named_types/new', locals: {
+  page_title: Mes.t(:new_lot_type),
+  back_button_text: Mes.t(:back_to_resource_list, resource: Mes::LotType.model_name.human)
+} %>

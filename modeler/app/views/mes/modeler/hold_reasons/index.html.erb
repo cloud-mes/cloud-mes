@@ -1,36 +1,6 @@
-<% content_for :page_title do -%>
-  <%= plural_resource_name(Mes::HoldReason) -%>
-<% end -%>
-
-<% content_for :page_actions do -%>
-  <%= button_link_to Mes.t(:new_hold_reason), new_object_url, class: 'btn-success', icon: 'plus' %>
-<% end if policy(Mes::HoldReason).create? -%>
-
-<% if @hold_reasons.any? -%>
-  <table class="table">
-    <thead>
-      <tr data-hook="hold_reason_header">
-        <th><%= Mes.t(:hold_reason) -%></th>
-        <th><%= Mes.t(:description) -%></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @hold_reasons.each do |hold_reason| -%>
-      <tr id="<%= modeler_dom_id hold_reason %>" data-hook="hold_reason_row">
-        <td><%= hold_reason.hold_reason %></td>
-        <td><%= hold_reason.description %></td>
-        <td class="actions text-right">
-          <%= link_to_edit(hold_reason, no_text: true) if policy(Mes::HoldReason).edit? %>
-          <%= link_to_delete(hold_reason, no_text: true) if policy(Mes::HoldReason).destroy? %>
-        </td>
-      </tr>
-      <% end -%>
-    </tbody>
-  </table>
-<% else -%>
-  <div class="alert alert-info no-objects-found">
-    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::HoldReason)) %>,
-    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::HoldReason).create? %>!
-  </div>
-<% end -%>
+<%= render partial: 'mes/modeler/shared/named_types/index', locals: {
+  page_title: plural_resource_name(Mes::HoldReason),
+  new_button_text: Mes.t(:new_hold_reason),
+  resource_name: plural_resource_name(Mes::HoldReason),
+  resource: Mes::HoldReason
+} %>

@@ -1,0 +1,16 @@
+<% content_for :page_title do %>
+  <%= page_title %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to_with_icon 'arrow-left', back_button_text, collection_url, class: 'btn btn-default' %>
+<% end %>
+
+<%= render partial: 'mes/modeler/shared/error_messages', locals: { target: @object } %>
+
+<%= form_for [:modeler, @object] do |f| %>
+  <fieldset>
+    <%= render partial: 'mes/modeler/shared/named_types/form', locals: { f: f } %>
+    <%= render partial: 'mes/modeler/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

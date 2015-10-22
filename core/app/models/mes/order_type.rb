@@ -1,5 +1,4 @@
 module Mes
-  class OrderType < ActiveRecord::Base
-    validates :order_type, presence: true
+  class OrderType < Mes::NamedType
   end
 end

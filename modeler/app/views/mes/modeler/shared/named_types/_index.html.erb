@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+  <%= page_title %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to new_button_text, new_object_url, { icon: 'plus', id: 'modeler_new_named_type', :class => "btn-success" } %>
+<% end if policy(resource).create? %>
+
+<% if @collection.any? %>
+  <table class="table" id='listing_named_types' data-hook>
+    <thead>
+      <tr data-hook="named_types_header">
+        <th><%= Mes.t(:name) %></th>
+        <th><%= Mes.t(:description) %></th>
+        <th><%= Mes.t(:state) %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |named_type| %>
+        <tr id="<%= modeler_dom_id named_type %>" data-hook="named_type_row">
+          <td><%= named_type.name -%></td>
+          <td><%= named_type.description -%></td>
+          <td><%= Mes.t(named_type.active? ? :active : :inactive) -%></td>
+          <td class="actions text-right">
+            <%= link_to_edit(named_type, no_text: true) if policy(named_type).edit? %>
+            <%= link_to_delete(named_type, no_text: true) if policy(named_type).destroy? %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: resource_name) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(resource).create? %>!
+  </div>
+<% end %>

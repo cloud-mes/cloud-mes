@@ -1,5 +1,4 @@
 module Mes
-  class LotType < ActiveRecord::Base
-    validates :lot_type, presence: true, uniqueness: true
+  class LotType < Mes::NamedType
   end
 end

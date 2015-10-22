@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
 <head data-hook="modeler_page_head">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><%= modeler_title %></title>
-  <%= stylesheet_link_tag 'mes/modeler', media: "all" %>
-  <%= javascript_include_tag 'mes/modeler' %>
-  <%= csrf_meta_tags %>
-  <%= javascript_tag do %>
-    <%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" %>
-  <% end %>
-  <%= yield :head %>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= modeler_title %></title>
+<%= stylesheet_link_tag 'mes/modeler', media: "all" %>
+<%= javascript_include_tag 'mes/modeler' %>
+<%= csrf_meta_tags %>
+<%= javascript_tag do -%>
+<%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" -%>
+<% end -%>
+<%= yield :head %>
 </head>
 <body>
 <header class="header <%= current_mes_user ? "logged-in" : "logged-out" %>">

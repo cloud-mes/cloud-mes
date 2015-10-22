@@ -4,9 +4,11 @@ en:
       cancel: Cancel
       create: Create
       update: Update
+    active: Active
     add_one: Add One
     are_you_sure: Are you sure?
     are_you_sure_delete: Are you sure you want to delete this record?
+    back_to_resource_list: 'Back To %{resource} List'
     bin_code: Bin Code
     bin_codes: Bin Codes
     bin_type: Bin Type
@@ -58,6 +60,7 @@ en:
     reject_type: Reject Type
     sap_location: SAP Location
     small_pm_frequency_seconds: Small PM Frequency Seconds
+    state: State
     step_code: Step Code
     step_codes: Step Codes
     step_type: Step Type

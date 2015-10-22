@@ -12,29 +12,33 @@ class CreateMesTables < ActiveRecord::Migration
     add_index :mes_factories, [:factory_code], name: 'idx_on_factories', unique: true
 
     create_table :mes_lot_types do |t|
-      t.string :lot_type, null: false
+      t.string :name, null: false
       t.string :description
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end
 
     create_table :mes_order_types do |t|
-      t.string :order_type, null: false
+      t.string :name, null: false
       t.string :description
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end
 
     create_table :mes_hold_reasons do |t|
-      t.string :hold_reason, null: false
+      t.string :name, null: false
       t.string :description
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end
 
     create_table :mes_release_reasons do |t|
-      t.string :release_reason, null: false
+      t.string :name, null: false
       t.string :description
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end
@@ -419,14 +423,14 @@ class CreateMesTables < ActiveRecord::Migration
     add_index :mes_work_orders, [:product_id], name: 'idx_product_id_on_work_orders'
 
     create_table :mes_workflows do |t|
-      # select field
-      t.string :workflow_name, null: false
+      t.string :name, null: false
       t.string :description
+      t.boolean :active, default: true
 
       t.timestamps
     end
 
-    add_index :mes_workflows, [:workflow_name], name: 'idx_on_workflows', unique: true
+    add_index :mes_workflows, [:name], name: 'idx_on_workflows', unique: true
 
     create_table :mes_steps do |t|
       t.integer :work_order_id

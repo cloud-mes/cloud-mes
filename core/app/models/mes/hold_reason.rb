@@ -1,5 +1,4 @@
 module Mes
-  class HoldReason < ActiveRecord::Base
-    validates :hold_reason, presence: true, uniqueness: true
+  class HoldReason < Mes::NamedType
   end
 end
