@@ -1,7 +1,9 @@
-require 'mes-core'
 require 'jquery/rails'
+require 'jquery-ui-rails'
 require 'js_cookie_rails'
+require 'sprockets/rails'
 require 'bootstrap-sass'
+require 'mes-core'
 require 'mes/modeler/engine'
 
 module Mes::Modeler
