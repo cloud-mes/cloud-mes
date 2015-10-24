@@ -7,10 +7,10 @@
     <%= f.label :description, Mes.t(:description) %><br>
     <%= f.text_field :description, :class => 'form-control' %>
   <% end %>
-  <div class="checkbox">
+  <%= f.field_container :active, :class => ['checkbox'] do %>
     <%= label_tag :active do %>
       <%= f.check_box :active %>
       <%= Mes.t(:active) %>
     <% end %>
-  </div>
+  <% end %>
 </div>
