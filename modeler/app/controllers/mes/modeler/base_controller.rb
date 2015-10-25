@@ -1,5 +1,6 @@
 class Mes::Modeler::BaseController < Mes::BaseController
   helper 'mes/modeler/navigation'
+  helper 'mes/modeler/sidebar_menu'
   layout 'mes/layouts/modeler'
 
   protected

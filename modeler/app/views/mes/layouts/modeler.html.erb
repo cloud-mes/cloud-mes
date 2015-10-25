@@ -43,10 +43,10 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 hidden-xs sidebar" id="main-sidebar" data-hook="modeler_tabs">
       <ul class="nav nav-sidebar">
-        <%= main_menu_tree Mes.t(:product_model), icon: 'road', sub_menu: 'product_model', url: '#sidebar-product-model' %>
+        <%= sub_menu_product_model Mes.t(:product_model), id: 'sidebar-product-model', icon: 'road' %>
       </ul>
       <ul class="nav nav-sidebar">
-        <%= main_menu_tree Mes.t(:equipment), icon: 'cog', sub_menu: 'equipment', url: '#sidebar-equipment' %>
+        <%= sub_menu_equipment Mes.t(:equipment), id: 'sidebar-equipment', icon: 'cog' %>
       </ul>
       <ul class="nav nav-sidebar">
         <%= main_menu_tree Mes.t(:configurations), icon: 'wrench', sub_menu: 'configuration', url: '#sidebar-configuration' %>
