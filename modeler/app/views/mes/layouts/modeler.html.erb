@@ -49,7 +49,7 @@
         <%= sub_menu_equipment Mes.t(:equipment), id: 'sidebar-equipment', icon: 'cog' %>
       </ul>
       <ul class="nav nav-sidebar">
-        <%= main_menu_tree Mes.t(:configurations), icon: 'wrench', sub_menu: 'configuration', url: '#sidebar-configuration' %>
+        <%= sub_menu_configuration Mes.t(:configurations), id: 'sidebar-configuration', icon: 'wrench' %>
       </ul>
     </div>
     <div class="<%= cookies['sidebar-minimized'] == 'true' ? 'col-sm-12 col-md-12 sidebar-collapsed' : 'col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2' %>" id="main-part">

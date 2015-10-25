@@ -11,6 +11,19 @@ module Mes::Modeler::SidebarMenuHelper
     end
   end
 
+  def sub_menu_configuration(text, id:, icon: nil)
+    sub_menu_tree text, id, icon: icon do
+      concat sidebar_menu_item(Mes.t(:factories), mes.modeler_factories_path) if policy(Mes::Factory).index?
+      concat sidebar_menu_item(Mes.t(:lot_types), mes.modeler_lot_types_path) if policy(Mes::LotType).index?
+      concat sidebar_menu_item(Mes.t(:order_types), mes.modeler_order_types_path) if policy(Mes::OrderType).index?
+      concat sidebar_menu_item(Mes.t(:hold_reasons), mes.modeler_hold_reasons_path) if policy(Mes::HoldReason).index?
+      concat sidebar_menu_item(Mes.t(:release_reasons), mes.modeler_release_reasons_path) if policy(Mes::ReleaseReason).index?
+      concat sidebar_menu_item(Mes.t(:reject_codes), mes.modeler_reject_codes_path) if policy(Mes::RejectCode).index?
+      concat sidebar_menu_item(Mes.t(:bin_codes), mes.modeler_bin_codes_path) if policy(Mes::BinCode).index?
+      concat sidebar_menu_item(Mes.t(:step_codes), mes.modeler_step_codes_path) if policy(Mes::StepCode).index?
+    end
+  end
+
   private
 
   def sub_menu_tree(text, id, icon: nil)

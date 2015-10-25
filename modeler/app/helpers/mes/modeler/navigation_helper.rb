@@ -8,14 +8,6 @@ module Mes::Modeler::NavigationHelper
     end
   end
 
-  # Main menu tree menu
-  def main_menu_tree(text, icon: nil, sub_menu: nil, url: '#')
-    content_tag :li, class: 'sidebar-menu-item' do
-      main_menu_item(text, url: url, icon: icon) +
-        render(partial: "mes/modeler/shared/sub_menu/#{sub_menu}")
-    end
-  end
-
   def link_to_new(resource)
     options[:data] = { action: 'new' }
     options[:class] = 'btn btn-success btn-sm'
