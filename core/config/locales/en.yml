@@ -19,6 +19,7 @@ en:
     description: Description
     edit: Edit
     editing_resource: 'Editing %{resource}'
+    equipment: Equipment
     errors_prohibited_this_record_from_being_saved:
       one: 1 error prohibited this record from being saved
       other: ! '%{count} errors prohibited this record from being saved'
@@ -53,6 +54,7 @@ en:
     or: or
     order_type: Order Type
     order_types: Order Types
+    product_model: Product Model
     release_reason: Release Reason
     release_reasons: Release Reasons
     reject_code: Reject Code

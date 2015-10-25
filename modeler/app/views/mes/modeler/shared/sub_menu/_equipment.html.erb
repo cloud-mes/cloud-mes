@@ -1,0 +1,3 @@
+<ul data-hook="modler_equipment_sidebar_menu" class="collapse nav nav-pills nav-stacked" id="sidebar-equipment">
+  <%= sidebar_menu_item(Mes.t(:machine_types), mes.modeler_machine_types_path) if policy(Mes::MachineType).index? %>
+</ul>
