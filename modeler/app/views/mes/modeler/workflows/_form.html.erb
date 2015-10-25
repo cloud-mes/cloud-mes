@@ -19,7 +19,7 @@
       <%= f.text_field :description, :class => 'form-control' %>
     <% end %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-8">
     <table class="table" id="listing_workflow_steps">
       <thead>
         <tr>
@@ -27,6 +27,10 @@
           <th><%= Mes.t(:sequence) %></th>
           <th><%= Mes.t(:name) %></th>
           <th><%= Mes.t(:description) %></th>
+          <th><%= Mes.t(:active) %></th>
+          <th><%= Mes.t(:units_count) %></th>
+          <th><%= Mes.t(:lots_count) %></th>
+          <th><%= Mes.t(:step_hold_count) %></th>
           <th class="actions">Delete?</th>
         </tr>
       </thead>
@@ -41,6 +45,10 @@
           <td><%= step.sequence -%></td>
           <td><%= step.name %></td>
           <td><%= step.description %></td>
+          <td><%= g.check_box :active %></td>
+          <td><%= step.units_count %></td>
+          <td><%= step.lots_count %></td>
+          <td><%= step.step_hold_count %></td>
           <td class="actions">
             <%= g.check_box :_destroy %>
           </td>

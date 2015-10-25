@@ -441,7 +441,7 @@ class CreateMesTables < ActiveRecord::Migration
       # so can quick determine if for routing step, if unit is first or last latter
       t.integer :units_count, null: false, default: 0
       t.integer :lots_count, null: false, default: 0
-      t.integer :hold_count, null: false, default: 0
+      t.integer :step_hold_count, null: false, default: 0
 
       t.timestamps
     end

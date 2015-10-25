@@ -33,6 +33,7 @@ en:
     large_pm_frequency_seconds: Large PM Frequency Seconds
     lot_type: Lot Type
     lot_types: Lot Types
+    lots_count: Lots Count
     machine_required: Machine Required
     machine_type: Machine Type
     machine_types: Machine Types
@@ -67,12 +68,14 @@ en:
     step: Step
     step_code: Step Code
     step_codes: Step Codes
+    step_hold_count: Step Hold Count
     step_type: Step Type
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
     successfully_updated: ! '%{resource} has been successfully updated!'
     tray_generation: Tray Generation
     tray_management: Tray Management
+    units_count: Units Count
     workflow: Workflow
     workflows: Workflows
     workflow_name: Workflow Name
