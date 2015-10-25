@@ -34,10 +34,11 @@
       <% workflow.steps.each do |step| -%>
         <%= f.fields_for :steps, step do |g| -%>
         <tr>
+          <%= g.hidden_field :sequence -%>
           <td class="move-handle">
             <span class="glyphicon glyphicon-sort handle"></span>
           </td>
-          <td><%= step.sequence -%><%= g.hidden_field :sequence -%></td>
+          <td><%= step.sequence -%></td>
           <td><%= step.name %></td>
           <td><%= step.description %></td>
           <td class="actions">

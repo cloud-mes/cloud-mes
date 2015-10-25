@@ -92,7 +92,13 @@ $(document).ready(function(){
   });
 
   $('tbody.sortable').sortable({
-    handle: '.handle'
+    handle: '.handle',
+    update: function(e, ui) {
+      $.each($('tbody.sortable tr'), function(position, obj){
+        obj.children[0].value = position + 1;
+        obj.children[2].textContent = position + 1;
+      });
+    }
   });
 
   $('a.dismiss').click(function() {
