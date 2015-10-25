@@ -1,4 +1,12 @@
-<%= render partial: 'mes/modeler/shared/named_types/edit', locals: {
-  page_title: Mes.t(:editing_resource, resource: Mes::Workflow.model_name.human),
-  back_button_text: Mes.t(:back_to_resource_list, resource: Mes::Workflow.model_name.human)
-} %>
+<% content_for :page_title do %>
+  <%= Mes.t(:editing_resource, resource: Mes::Workflow.model_name.human) %>
+<% end %>
+
+<%= render :partial => 'mes/modeler/shared/error_messages', :locals => { :target => @workflow } %>
+
+<%= form_for [:modeler, @workflow] do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'mes/modeler/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>
