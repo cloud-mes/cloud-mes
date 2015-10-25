@@ -61,6 +61,7 @@ en:
     sap_location: SAP Location
     small_pm_frequency_seconds: Small PM Frequency Seconds
     state: State
+    step: Step
     step_code: Step Code
     step_codes: Step Codes
     step_type: Step Type

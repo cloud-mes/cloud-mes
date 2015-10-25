@@ -433,12 +433,10 @@ class CreateMesTables < ActiveRecord::Migration
     add_index :mes_workflows, [:name], name: 'idx_on_workflows', unique: true
 
     create_table :mes_steps do |t|
-      t.integer :work_order_id
-      t.integer :workflow_id
+      t.integer :workflow_id, null: false
       t.integer :step_code_id, null: false
-      # No need to store step_code_name in table, will resolve to step_code_id when create.
-      t.integer :sequence # the sequence must following SAP work order provided one, so latter reject unit can be successfully report.
-      t.integer :status, null: false, default: 0  # default 'active'
+      t.integer :sequence
+      t.boolean :active, default: true
       # units_count is counter cache for the number of units belongs to such steps,
       # so can quick determine if for routing step, if unit is first or last latter
       t.integer :units_count, null: false, default: 0
@@ -448,7 +446,6 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :mes_steps, [:work_order_id], name: 'idx_work_order_id_on_steps'
     add_index :mes_steps, [:workflow_id], name: 'idx_workflow_id_on_steps'
     add_index :mes_steps, [:step_code_id], name: 'idx_step_code_id_on_steps'
 
