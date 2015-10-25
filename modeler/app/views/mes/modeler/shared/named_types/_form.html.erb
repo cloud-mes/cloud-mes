@@ -1,16 +1,22 @@
-<div data-hook="modeler_named_type_form_fields">
-  <%= f.field_container :name, class: ['form-group'] do %>
-    <%= f.label :name, Mes.t(:name) %> <span class="required">*</span>
-    <%= f.text_field :name, class: 'form-control' %>
-  <% end %>
-  <%= f.field_container :description, :class => ['form-group'] do %>
-    <%= f.label :description, Mes.t(:description) %><br>
-    <%= f.text_field :description, :class => 'form-control' %>
-  <% end %>
-  <%= f.field_container :active, :class => ['checkbox'] do %>
-    <%= label_tag :active do %>
-      <%= f.check_box :active %>
-      <%= Mes.t(:active) %>
+<div data-hook="modeler_named_type_form_fields" class="row">
+  <div class="col-md-8">
+    <%= f.field_container :name, class: ['form-group'] do %>
+      <%= f.label :name, Mes.t(:name) %> <span class="required">*</span>
+      <%= f.text_field :name, class: 'form-control' %>
     <% end %>
-  <% end %>
+  </div>
+  <div class="col-md-4">
+    <%= f.field_container :active, :class => ['checkbox'] do %>
+      <%= label_tag :active do %>
+        <%= f.check_box :active %>
+        <%= Mes.t(:active) %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <%= f.field_container :description, :class => ['form-group'] do %>
+      <%= f.label :description, Mes.t(:description) %><br>
+      <%= f.text_field :description, :class => 'form-control' %>
+    <% end %>
+  </div>
 </div>
