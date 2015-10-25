@@ -61,6 +61,7 @@ en:
     reject_codes: Reject Codes
     reject_type: Reject Type
     sap_location: SAP Location
+    sequence: Sequence
     small_pm_frequency_seconds: Small PM Frequency Seconds
     state: State
     step: Step

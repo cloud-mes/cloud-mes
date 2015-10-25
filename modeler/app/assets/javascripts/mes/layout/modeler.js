@@ -91,6 +91,10 @@ $(document).ready(function(){
     return false;
   });
 
+  $('tbody.sortable').sortable({
+    handle: '.handle'
+  });
+
   $('a.dismiss').click(function() {
     $(this).parent().fadeOut();
   });
