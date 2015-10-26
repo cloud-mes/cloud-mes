@@ -38,20 +38,17 @@
       <% workflow.steps.each do |step| -%>
         <%= f.fields_for :steps, step do |g| -%>
         <tr>
-          <%= g.hidden_field :sequence -%>
-          <td class="move-handle">
-            <span class="glyphicon glyphicon-sort handle"></span>
-          </td>
+          <%= g.hidden_field :sequence %>
+          <td class="move-handle"><span class="glyphicon glyphicon-sort handle"></span></td>
           <td><%= step.sequence -%></td>
-          <td><%= step.name %></td>
+          <td><%= step.name -%></td>
           <td><%= step.description %></td>
-          <td><%= g.check_box :active %></td>
-          <td><%= step.units_count %></td>
-          <td><%= step.lots_count %></td>
-          <td><%= step.step_hold_count %></td>
-          <td class="actions">
-            <%= g.check_box :_destroy %>
-          </td>
+          <td><%= g.check_box :active -%></td>
+          <td><%= step.units_count -%></td>
+          <td><%= step.lots_count -%></td>
+          <td><%= step.step_hold_count -%></td>
+          <td class="actions"><%= g.check_box :_destroy -%></td>
+          <%= g.hidden_field :step_code_id %>
         </tr>
         <% end -%>
       <% end -%>
