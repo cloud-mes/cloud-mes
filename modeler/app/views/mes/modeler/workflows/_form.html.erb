@@ -19,6 +19,14 @@
       <%= f.text_field :description, :class => 'form-control' %>
     <% end %>
   </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <%= label_tag :new_workflow_step, Mes.t(:new_step_code), class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= select_tag :new_workflow_step, options_from_collection_for_select(Mes::StepCode.all, :id, ->(s) { "#{s.name} - #{s.description}" }, nil), class: 'form-control', include_blank: true -%>
+      </div>
+    </div>
+  </div>
   <div class="col-md-8">
     <table class="table" id="listing_workflow_steps">
       <thead>
@@ -34,7 +42,7 @@
           <th class="actions">Delete?</th>
         </tr>
       </thead>
-      <tbody class="sortable">
+      <tbody class="sortable" id="workflow_steps">
       <% workflow.steps.each do |step| -%>
         <%= f.fields_for :steps, step do |g| -%>
         <tr>
