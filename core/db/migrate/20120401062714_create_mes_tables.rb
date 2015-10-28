@@ -118,7 +118,7 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :mes_certs do |t|
+    create_table :mes_certifications do |t|
       t.string  :certification_code, null: false
       t.string  :description
       t.integer :life_seconds
@@ -126,17 +126,17 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :mes_certs, :certification_code, name: 'idx_cert_code_on_certs'
+    add_index :mes_certifications, :certification_code, name: 'idx_cert_code_on_certs'
 
-    create_join_table :step_codes, :certs, table_name: 'mes_certs_step_codes' do |t|
-      t.index [:step_code_id, :cert_id], unique: true, name: 'idx_step_code_certs'
+    create_join_table :step_codes, :certifications, table_name: 'mes_certifications_step_codes' do |t|
+      t.index [:step_code_id, :certification_id], unique: true, name: 'idx_step_code_certs'
 
       t.timestamps
     end
 
     create_table :mes_operator_certifications do |t|
       t.integer  :user_id, null: false
-      t.integer  :cert_id, null: false
+      t.integer  :certification_id, null: false
       t.datetime :validation_start
       t.datetime :validation_expire
 
@@ -150,7 +150,7 @@ class CreateMesTables < ActiveRecord::Migration
       add_column :users, :qa,           :boolean
     end
 
-    add_index :mes_operator_certifications, [:user_id, :cert_id], name: 'idx_on_operator_certifications'
+    add_index :mes_operator_certifications, [:user_id, :certification_id], name: 'idx_on_operator_certifications'
 
     create_table :mes_step_process_settings do |t|
       # select field
