@@ -1,0 +1,16 @@
+<div data-hook="modeler_certification_form_fields">
+  <%= f.field_container :name, :class => ['form-group'] do %>
+    <%= f.label :name, Mes.t(:name) %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :life_seconds, :class => ['form-group'] do %>
+    <%= f.label :life_seconds, Mes.t(:life_seconds) %><br>
+    <%= f.text_field :life_seconds, :class => 'form-control' %>
+  <% end %>
+</div>

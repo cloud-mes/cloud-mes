@@ -1,0 +1,38 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::Certification) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_certification), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::Certification).create? -%>
+
+<% if @certifications.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="certification_header">
+        <th><%= Mes.t(:name) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th><%= Mes.t(:life_seconds) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @certifications.each do |certification| -%>
+      <tr id="<%= modeler_dom_id certification %>" data-hook="certification_row">
+        <td><%= certification.name -%></td>
+        <td><%= certification.description -%></td>
+        <td><%= certification.life_seconds -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(certification, no_text: true) if policy(Mes::Certification).edit? %>
+          <%= link_to_delete(certification, no_text: true) if policy(Mes::Certification).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::Certification)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::Certification).create? %>!
+  </div>
+<% end -%>

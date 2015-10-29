@@ -14,6 +14,8 @@ en:
     bin_type: Bin Type
     can_auto_start_current_step: Can auto start current step
     calibration_frequency_seconds: Calibration Frequency Seconds
+    certification: Certification
+    certifications: Certifications
     configurations: Configurations
     delete: Delete
     description: Description
@@ -31,6 +33,7 @@ en:
     hold_reason: Hold Reason
     hold_reasons: Hold Reasons
     large_pm_frequency_seconds: Large PM Frequency Seconds
+    life_seconds: Life Seconds
     lot_type: Lot Type
     lot_types: Lot Types
     lots_count: Lots Count
@@ -40,6 +43,7 @@ en:
     modeler: Modeler
     name: Name
     new_bin_code: New Bin Code
+    new_certification: New Certification
     new_factory: New Factory
     new_hold_reason: New Hold Reason
     new_lot_type: New Lot Type

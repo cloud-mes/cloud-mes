@@ -119,14 +119,14 @@ class CreateMesTables < ActiveRecord::Migration
     end
 
     create_table :mes_certifications do |t|
-      t.string  :certification_code, null: false
+      t.string  :name, null: false
       t.string  :description
       t.integer :life_seconds
 
       t.timestamps
     end
 
-    add_index :mes_certifications, :certification_code, name: 'idx_cert_code_on_certs'
+    add_index :mes_certifications, :name, name: 'idx_cert_code_on_certs'
 
     create_join_table :step_codes, :certifications, table_name: 'mes_certifications_step_codes' do |t|
       t.index [:step_code_id, :certification_id], unique: true, name: 'idx_step_code_certs'

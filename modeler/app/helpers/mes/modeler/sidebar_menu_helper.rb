@@ -21,6 +21,7 @@ module Mes::Modeler::SidebarMenuHelper
       concat sidebar_menu_item(Mes.t(:reject_codes), mes.modeler_reject_codes_path) if policy(Mes::RejectCode).index?
       concat sidebar_menu_item(Mes.t(:bin_codes), mes.modeler_bin_codes_path) if policy(Mes::BinCode).index?
       concat sidebar_menu_item(Mes.t(:step_codes), mes.modeler_step_codes_path) if policy(Mes::StepCode).index?
+      concat sidebar_menu_item(Mes.t(:certifications), mes.modeler_certifications_path) if policy(Mes::Certification).index?
     end
   end
 

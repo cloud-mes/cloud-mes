@@ -4,7 +4,7 @@ Mes::Core::Engine.routes.draw do
               :hold_reasons, :release_reasons,
               :reject_codes, :bin_codes,
               :step_codes, :machine_types,
-              :workflows,
+              :workflows, :certifications,
               except: :show
   end
 end
