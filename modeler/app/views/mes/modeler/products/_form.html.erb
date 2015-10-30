@@ -1,0 +1,26 @@
+<div data-hook="modeler_product_form_fields">
+  <%= f.field_container :product_code, :class => ['form-group'] do %>
+    <%= f.label :product_code, Mes.t(:product_code) %>
+    <%= f.text_field :product_code, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :capacity, :class => ['form-group'] do %>
+    <%= f.label :capacity, Mes.t(:capacity) %><br>
+    <%= f.text_field :capacity, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :wafer_size, :class => ['form-group'] do %>
+    <%= f.label :wafer_size, Mes.t(:wafer_size) %><br>
+    <%= f.text_field :wafer_size, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :leads, :class => ['form-group'] do %>
+    <%= f.label :leads, Mes.t(:leads) %><br>
+    <%= f.text_field :leads, :class => 'form-control' %>
+  <% end %>
+</div>

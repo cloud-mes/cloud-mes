@@ -14,6 +14,7 @@ en:
     bin_type: Bin Type
     can_auto_start_current_step: Can auto start current step
     calibration_frequency_seconds: Calibration Frequency Seconds
+    capacity: Capacity
     certification: Certification
     certifications: Certifications
     configurations: Configurations
@@ -33,6 +34,7 @@ en:
     hold_reason: Hold Reason
     hold_reasons: Hold Reasons
     large_pm_frequency_seconds: Large PM Frequency Seconds
+    leads: Leads
     life_seconds: Life Seconds
     lot_type: Lot Type
     lot_types: Lot Types
@@ -49,6 +51,7 @@ en:
     new_lot_type: New Lot Type
     new_machine_type: New Machine Type
     new_order_type: New Order Type
+    new_product: New Product
     new_release_reason: New Release Reason
     new_reject_code: New Reject Code
     new_step_code: New Step Code
@@ -59,6 +62,9 @@ en:
     or: or
     order_type: Order Type
     order_types: Order Types
+    product: Product
+    products: Products
+    product_code: Product Code
     product_model: Product Model
     release_reason: Release Reason
     release_reasons: Release Reasons
@@ -80,6 +86,7 @@ en:
     tray_generation: Tray Generation
     tray_management: Tray Management
     units_count: Units Count
+    wafer_size: Wafer Size
     workflow: Workflow
     workflows: Workflows
     workflow_name: Workflow Name
