@@ -563,8 +563,8 @@ class CreateMesTables < ActiveRecord::Migration
     add_index :mes_tool_history_details, [:tool_history_id], name: 'idx_tool_history_id_on_details'
 
     create_table :mes_units do |t|
-      t.string  :unit_sn, null: false # unit serial number, document format spec 46, XXXXXXXX 8 char long 16 based number, auto increate at (0x)00001001
-      t.integer :status, null: false, default: 0  # default 'in_queue'
+      t.string  :unit_sn, null: false # unit serial number
+      t.integer :status, null: false, default: 0 # default 'in_queue'
       t.boolean :sap_confirmed
       t.string  :panel_number         # coming from CVS
       t.string  :cavity_number        # coming from CVS
@@ -600,10 +600,9 @@ class CreateMesTables < ActiveRecord::Migration
     add_index :mes_units, :step_id, name: 'idx_step_id_on_units'
     add_index :mes_units, :product_id, name: 'idx_product_id_on_units'
 
-
     create_table :mes_lots do |t|
       t.string  :lot_no, null: false
-      t.integer :status, null: false, default: 0  # default 'in_queue'
+      t.integer :status, null: false, default: 0 # default 'in_queue'
       t.integer :work_order_id
       t.integer :workflow_id, null: false
       t.integer :step_id, null: false

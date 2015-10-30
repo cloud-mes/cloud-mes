@@ -27,5 +27,8 @@ Metrics/MethodLength:
 Style/IndentationWidth:
   Width: 2
 
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
 Style/UnneededPercentQ:
   Enabled: false
