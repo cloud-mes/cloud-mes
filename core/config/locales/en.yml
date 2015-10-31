@@ -17,9 +17,14 @@ en:
     capacity: Capacity
     certification: Certification
     certifications: Certifications
+    component: Component
+    components: Components
+    component_code: Component Code
+    component_type: Component Type
     configurations: Configurations
     delete: Delete
     description: Description
+    direct_material: Direct Material
     edit: Edit
     editing_resource: 'Editing %{resource}'
     equipment: Equipment
@@ -30,6 +35,7 @@ en:
     factory_code: Factory Code
     factory_location: Factory Location
     factory_name: Factory Name
+    floor_life_seconds: Floor Life Seconds
     for_inline_rework: For Inline Rework
     hold_reason: Hold Reason
     hold_reasons: Hold Reasons
@@ -51,6 +57,7 @@ en:
     modeler: Modeler
     name: Name
     new_bin_code: New Bin Code
+    new_component: New Component
     new_certification: New Certification
     new_factory: New Factory
     new_hold_reason: New Hold Reason
@@ -76,6 +83,7 @@ en:
     products: Products
     product_code: Product Code
     product_model: Product Model
+    quantity_per_container: Quantity Per Container
     release_reason: Release Reason
     release_reasons: Release Reasons
     reject_code: Reject Code
@@ -83,6 +91,7 @@ en:
     reject_type: Reject Type
     sap_location: SAP Location
     sequence: Sequence
+    shelf_life_seconds: Shelf Life Seconds
     small_pm_frequency_seconds: Small PM Frequency Seconds
     state: State
     status: Status

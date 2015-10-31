@@ -1,0 +1,38 @@
+<div data-hook="modeler_component_form_fields">
+  <%= f.field_container :component_code, :class => ['form-group'] do %>
+    <%= f.label :component_code, Mes.t(:component_code) %>
+    <%= f.text_field :component_code, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :component_type, :class => ['form-group'] do %>
+    <%= f.label :component_type, Mes.t(:component_type) %><br>
+    <%= f.text_field :component_type, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :direct_material, :class => ['checkbox'] do %>
+    <%= label_tag :direct_material do %>
+      <%= f.check_box :direct_material %>
+      <%= Mes.t(:direct_material) %>
+    <% end %>
+  <% end %>
+
+  <%= f.field_container :floor_life_seconds, :class => ['form-group'] do %>
+    <%= f.label :floor_life_seconds, Mes.t(:floor_life_seconds) %><br>
+    <%= f.text_field :floor_life_seconds, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :shelf_life_seconds, :class => ['form-group'] do %>
+    <%= f.label :shelf_life_seconds, Mes.t(:shelf_life_seconds) %><br>
+    <%= f.text_field :shelf_life_seconds, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :quantity_per_container, :class => ['form-group'] do %>
+    <%= f.label :quantity_per_container, Mes.t(:quantity_per_container) %><br>
+    <%= f.text_field :quantity_per_container, :class => 'form-control' %>
+  <% end %>
+</div>

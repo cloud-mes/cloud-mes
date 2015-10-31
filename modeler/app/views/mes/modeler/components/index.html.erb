@@ -1,0 +1,46 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::Component) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_machine), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::Component).create? -%>
+
+<% if @components.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="component_header">
+        <th><%= Mes.t(:component_code) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th><%= Mes.t(:component_type) -%></th>
+        <th><%= Mes.t(:direct_material) -%></th>
+        <th><%= Mes.t(:floor_life_seconds) -%></th>
+        <th><%= Mes.t(:shelf_life_seconds) -%></th>
+        <th><%= Mes.t(:quantity_per_container) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @components.each do |component| -%>
+      <tr id="<%= modeler_dom_id component %>" data-hook="component_row">
+        <td><%= component.component_code -%></td>
+        <td><%= component.description -%></td>
+        <td><%= component.component_type -%></td>
+        <td><%= component.direct_material -%></td>
+        <td><%= component.floor_life_seconds -%></td>
+        <td><%= component.shelf_life_seconds -%></td>
+        <td><%= component.quantity_per_container -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(component, no_text: true) if policy(Mes::Component).edit? %>
+          <%= link_to_delete(component, no_text: true) if policy(Mes::Component).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::Component)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::Component).create? %>!
+  </div>
+<% end -%>
