@@ -314,7 +314,7 @@ class CreateMesTables < ActiveRecord::Migration
     add_index :mes_component_step_usage_setup, [:step_code_id], name: 'idx_step_code_on_comp_step_use'
 
     create_table :mes_machine_types do |t|
-      t.string  :machine_type
+      t.string  :name
       t.string  :description, limit: 2000
       t.integer :calibration_frequency_seconds
       t.integer :small_pm_frequency_seconds
