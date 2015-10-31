@@ -5,7 +5,7 @@ Mes::Core::Engine.routes.draw do
               :reject_codes, :bin_codes,
               :step_codes, :machine_types,
               :workflows, :certifications,
-              :products,
+              :products, :machines,
               except: :show
   end
 end

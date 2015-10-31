@@ -1,0 +1,44 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::Machine) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_machine), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::Machine).create? -%>
+
+<% if @machines.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="machine_header">
+        <th><%= Mes.t(:machine_code) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th><%= Mes.t(:machine_type) -%></th>
+        <th><%= Mes.t(:next_calibration_time) -%></th>
+        <th><%= Mes.t(:next_small_pm_time) -%></th>
+        <th><%= Mes.t(:next_large_pm_time) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @machines.each do |machine| -%>
+      <tr id="<%= modeler_dom_id machine %>" data-hook="machine_row">
+        <td><%= machine.machine_code -%></td>
+        <td><%= machine.description -%></td>
+        <td><%= machine.machine_type.name -%></td>
+        <td><%= machine.next_calibration_time -%></td>
+        <td><%= machine.next_small_pm_time -%></td>
+        <td><%= machine.next_large_pm_time -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(machine, no_text: true) if policy(Mes::Machine).edit? %>
+          <%= link_to_delete(machine, no_text: true) if policy(Mes::Machine).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::Machine)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::Machine).create? %>!
+  </div>
+<% end -%>

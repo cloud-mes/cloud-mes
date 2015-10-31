@@ -34,11 +34,17 @@ en:
     hold_reason: Hold Reason
     hold_reasons: Hold Reasons
     large_pm_frequency_seconds: Large PM Frequency Seconds
+    last_calibration_time: Last Calibration Time
+    last_large_pm_time: Last Large PM Time
+    last_small_pm_time: Last Small PM Time
     leads: Leads
     life_seconds: Life Seconds
     lot_type: Lot Type
     lot_types: Lot Types
     lots_count: Lots Count
+    machine: Machine
+    machines: Machines
+    machine_code: Machine Code
     machine_required: Machine Required
     machine_type: Machine Type
     machine_types: Machine Types
@@ -49,6 +55,7 @@ en:
     new_factory: New Factory
     new_hold_reason: New Hold Reason
     new_lot_type: New Lot Type
+    new_machine: New Machine
     new_machine_type: New Machine Type
     new_order_type: New Order Type
     new_product: New Product
@@ -56,6 +63,9 @@ en:
     new_reject_code: New Reject Code
     new_step_code: New Step Code
     new_workflow: New Workflow
+    next_calibration_time: Next Calibration Time
+    next_large_pm_time: Next Large PM Time
+    next_small_pm_time: Next Small PM Time
     no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
     notes: Notes
@@ -75,6 +85,7 @@ en:
     sequence: Sequence
     small_pm_frequency_seconds: Small PM Frequency Seconds
     state: State
+    status: Status
     step: Step
     step_code: Step Code
     step_codes: Step Codes

@@ -1,0 +1,31 @@
+<div data-hook="modeler_machine_form_fields">
+  <%= f.field_container :machine_code, :class => ['form-group'] do %>
+    <%= f.label :machine_code, Mes.t(:machine_code) %>
+    <%= f.text_field :machine_code, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :machine_type, :class => ['form-group'] do %>
+    <%= f.label :machine_type_id, Mes.t(:machine_type) %><br>
+    <%= f.select :machine_type_id, options_for_select(Mes::MachineType.pluck(:name, :id), @machine.machine_type_id), {}, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :next_calibration_time, :class => ['form-group'] do %>
+    <%= f.label :next_calibration_time, Mes.t(:next_calibration_time) %><br>
+    <%= f.text_field :next_calibration_time, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :next_small_pm_time, :class => ['form-group'] do %>
+    <%= f.label :next_small_pm_time, Mes.t(:next_small_pm_time) %><br>
+    <%= f.text_field :next_small_pm_time, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :next_large_pm_time, :class => ['form-group'] do %>
+    <%= f.label :next_large_pm_time, Mes.t(:next_large_pm_time) %><br>
+    <%= f.text_field :next_large_pm_time, :class => 'form-control' %>
+  <% end %>
+</div>
