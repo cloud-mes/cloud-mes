@@ -10,8 +10,8 @@
   <% end %>
 
   <%= f.field_container :component_type, :class => ['form-group'] do %>
-    <%= f.label :component_type, Mes.t(:component_type) %><br>
-    <%= f.text_field :component_type, :class => 'form-control' %>
+    <%= f.label :component_type_id, Mes.t(:component_type) %><br>
+    <%= f.select :component_type_id, options_for_select(Mes::ComponentType.pluck(:name, :id), @component.component_type_id), {}, class: 'form-control' %>
   <% end %>
 
   <%= f.field_container :direct_material, :class => ['checkbox'] do %>

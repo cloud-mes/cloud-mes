@@ -25,7 +25,7 @@
       <tr id="<%= modeler_dom_id component %>" data-hook="component_row">
         <td><%= component.component_code -%></td>
         <td><%= component.description -%></td>
-        <td><%= component.component_type -%></td>
+        <td><%= component.component_type.name -%></td>
         <td><%= component.direct_material -%></td>
         <td><%= component.floor_life_seconds -%></td>
         <td><%= component.shelf_life_seconds -%></td>

@@ -254,11 +254,19 @@ class CreateMesTables < ActiveRecord::Migration
 
     add_index :mes_inline_rework_next_steps, [:step_code_id, :defect_code, :from_step_code_id], name: 'idx_irns_on_step_defect_codes'
 
+    create_table :mes_component_types do |t|
+      t.string  :name
+      t.string  :description, limit: 2000
+      t.boolean :active, default: true
+
+      t.timestamps
+    end
+
     # Direct Materials / Indirect Materials are all components
     create_table :mes_components do |t|
       t.string   :component_code, null: false
       t.string   :description, limit: 2000
-      t.string   :component_type
+      t.integer  :component_type_id, null: false
       t.boolean  :direct_material
       t.integer  :floor_life_seconds
       t.integer  :shelf_life_seconds

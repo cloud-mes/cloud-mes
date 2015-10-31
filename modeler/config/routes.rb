@@ -6,7 +6,7 @@ Mes::Core::Engine.routes.draw do
               :step_codes, :machine_types,
               :workflows, :certifications,
               :products, :machines,
-              :components,
+              :component_types, :components,
               except: :show
   end
 end

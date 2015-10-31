@@ -21,6 +21,7 @@ en:
     components: Components
     component_code: Component Code
     component_type: Component Type
+    component_types: Component Types
     configurations: Configurations
     delete: Delete
     description: Description
@@ -58,6 +59,7 @@ en:
     name: Name
     new_bin_code: New Bin Code
     new_component: New Component
+    new_component_type: New Component Type
     new_certification: New Certification
     new_factory: New Factory
     new_hold_reason: New Hold Reason
