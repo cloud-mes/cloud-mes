@@ -1,0 +1,36 @@
+<div data-hook="modeler_tool_part_form_fields">
+  <%= f.field_container :name, :class => ['form-group'] do %>
+    <%= f.label :name, Mes.t(:name) %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :description, :class => ['form-group'] do %>
+    <%= f.label :description, Mes.t(:description) %><br>
+    <%= f.text_field :description, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :calibration_frequency_seconds, :class => ['form-group'] do %>
+    <%= f.label :calibration_frequency_seconds, Mes.t(:calibration_frequency_seconds) %><br>
+    <%= f.text_field :calibration_frequency_seconds, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :pm_frequency_seconds, :class => ['form-group'] do %>
+    <%= f.label :pm_frequency_seconds, Mes.t(:pm_frequency_seconds) %><br>
+    <%= f.text_field :pm_frequency_seconds, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :life_seconds, :class => ['form-group'] do %>
+    <%= f.label :life_seconds, Mes.t(:life_seconds) %><br>
+    <%= f.text_field :life_seconds, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :tool_consume_limit, :class => ['form-group'] do %>
+    <%= f.label :tool_consume_limit, Mes.t(:tool_consume_limit) %><br>
+    <%= f.text_field :tool_consume_limit, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :unit_consume_limit, :class => ['form-group'] do %>
+    <%= f.label :unit_consume_limit, Mes.t(:unit_consume_limit) %><br>
+    <%= f.text_field :unit_consume_limit, :class => 'form-control' %>
+  <% end %>
+</div>

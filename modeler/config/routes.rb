@@ -7,6 +7,7 @@ Mes::Core::Engine.routes.draw do
               :workflows, :certifications,
               :products, :machines,
               :component_types, :components,
+              :tool_parts,
               except: :show
   end
 end

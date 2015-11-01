@@ -363,14 +363,13 @@ class CreateMesTables < ActiveRecord::Migration
     add_index :mes_machine_mappings, [:step_code_id], name: 'idx_step_code_on_machine_map'
 
     create_table :mes_tool_parts do |t|
-      t.string  :tool_part, null: false
+      t.string  :name, null: false
       t.string  :description, limit: 2000
       t.integer :calibration_frequency_seconds
       t.integer :pm_frequency_seconds
       t.integer :life_seconds
       t.integer :tool_consume_limit
       t.integer :unit_consume_limit
-      t.string  :tool_type
 
       t.timestamps
     end

@@ -1,0 +1,46 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::ToolPart) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_tool_part), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::ToolPart).create? -%>
+
+<% if @tool_parts.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="tool_part_header">
+        <th><%= Mes.t(:name) -%></th>
+        <th><%= Mes.t(:description) -%></th>
+        <th><%= Mes.t(:calibration_frequency_seconds) -%></th>
+        <th><%= Mes.t(:pm_frequency_seconds) -%></th>
+        <th><%= Mes.t(:life_seconds) -%></th>
+        <th><%= Mes.t(:tool_consume_limit) -%></th>
+        <th><%= Mes.t(:unit_consume_limit) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tool_parts.each do |tool_part| -%>
+      <tr id="<%= modeler_dom_id tool_part %>" data-hook="tool_part_row">
+        <td><%= tool_part.name -%></td>
+        <td><%= tool_part.description -%></td>
+        <td><%= tool_part.calibration_frequency_seconds -%></td>
+        <td><%= tool_part.pm_frequency_seconds -%></td>
+        <td><%= tool_part.life_seconds -%></td>
+        <td><%= tool_part.tool_consume_limit -%></td>
+        <td><%= tool_part.unit_consume_limit -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(tool_part, no_text: true) if policy(Mes::ToolPart).edit? %>
+          <%= link_to_delete(tool_part, no_text: true) if policy(Mes::ToolPart).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::ToolPart)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::ToolPart).create? %>!
+  </div>
+<% end -%>
