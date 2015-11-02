@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap-sass',  '~> 3.3.5'
   s.add_dependency 'pundit', '~> 1.0.1'
   s.add_dependency 'js_cookie_rails', '~> 1.0.1'
+  s.add_dependency 'jquery-hoverIntent-rails', '~> 1.8.1'
 
   s.add_development_dependency 'sqlite3'
 end

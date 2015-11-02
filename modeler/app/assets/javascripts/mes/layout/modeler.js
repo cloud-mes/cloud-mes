@@ -42,7 +42,7 @@ $(document).ready(function(){
     }
   });
 
-  $('.sidebar-menu-item').hover(function(){
+  $('.sidebar-menu-item').hoverIntent(function(){
     if($('#wrapper').hasClass('sidebar-minimized')){
       $(this).toggleClass('menu-active');
       $(this).find('ul.nav').toggleClass('submenu-active');
