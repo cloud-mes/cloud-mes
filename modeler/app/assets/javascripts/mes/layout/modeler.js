@@ -42,17 +42,10 @@ $(document).ready(function(){
     }
   });
 
-  $('.sidebar-menu-item').mouseover(function(){
+  $('.sidebar-menu-item').hover(function(){
     if($('#wrapper').hasClass('sidebar-minimized')){
-      $(this).addClass('menu-active');
-      $(this).find('ul.nav').addClass('submenu-active');
-    }
-  });
-
-  $('.sidebar-menu-item').mouseout(function(){
-    if($('#wrapper').hasClass('sidebar-minimized')){
-      $(this).removeClass('menu-active');
-      $(this).find('ul.nav').removeClass('submenu-active');
+      $(this).toggleClass('menu-active');
+      $(this).find('ul.nav').toggleClass('submenu-active');
     }
   });
 
