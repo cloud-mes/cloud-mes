@@ -1,0 +1,60 @@
+<div data-hook="modeler_tool_form_fields">
+  <%= f.field_container :tool_code, :class => ['form-group'] do %>
+    <%= f.label :tool_code, Mes.t(:tool_code) %>
+    <%= f.text_field :tool_code, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :tool_part, :class => ['form-group'] do %>
+    <%= f.label :tool_part_id, Mes.t(:tool_part) %><br>
+    <%= f.select :tool_part_id, options_for_select(Mes::ToolPart.pluck(:name, :id), @tool.tool_part_id), {}, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :last_calibration_time, :class => ['form-group'] do %>
+    <%= f.label :last_calibration_time, Mes.t(:last_calibration_time) %><br>
+    <%= f.text_field :last_calibration_time, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :next_calibration_time, :class => ['form-group'] do %>
+    <%= f.label :next_calibration_time, Mes.t(:next_calibration_time) %><br>
+    <%= f.text_field :next_calibration_time, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :last_pm_time, :class => ['form-group'] do %>
+    <%= f.label :last_pm_time, Mes.t(:last_pm_time) %><br>
+    <%= f.text_field :last_pm_time, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :next_pm_time, :class => ['form-group'] do %>
+    <%= f.label :next_pm_time, Mes.t(:next_pm_time) %><br>
+    <%= f.text_field :next_pm_time, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :life_start, :class => ['form-group'] do %>
+    <%= f.label :life_start, Mes.t(:life_start) %><br>
+    <%= f.text_field :life_start, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :life_expire, :class => ['form-group'] do %>
+    <%= f.label :life_expire, Mes.t(:life_expire) %><br>
+    <%= f.text_field :life_expire, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :tool_processed_count, :class => ['form-group'] do %>
+    <%= f.label :tool_processed_count, Mes.t(:tool_processed_count) %><br>
+    <%= f.text_field :tool_processed_count, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :tool_processing_limit, :class => ['form-group'] do %>
+    <%= f.label :tool_processing_limit, Mes.t(:tool_processing_limit) %><br>
+    <%= f.text_field :tool_processing_limit, :class => 'form-control' %>
+  <% end %>
+  <%= f.field_container :unit_processed_count, :class => ['form-group'] do %>
+    <%= f.label :unit_processed_count, Mes.t(:unit_processed_count) %><br>
+    <%= f.text_field :unit_processed_count, :class => 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :unit_processing_limit, :class => ['form-group'] do %>
+    <%= f.label :unit_processing_limit, Mes.t(:unit_processing_limit) %><br>
+    <%= f.text_field :unit_processing_limit, :class => 'form-control' %>
+  <% end %>
+</div>

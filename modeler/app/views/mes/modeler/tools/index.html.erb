@@ -1,0 +1,58 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::Tool) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_tool), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::Tool).create? -%>
+
+<% if @tools.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="tool_header">
+        <th><%= Mes.t(:tool_code) -%></th>
+        <th><%= Mes.t(:tool_part) -%></th>
+        <th><%= Mes.t(:status) -%></th>
+        <th><%= Mes.t(:last_calibration_time) -%></th>
+        <th><%= Mes.t(:next_calibration_time) -%></th>
+        <th><%= Mes.t(:last_pm_time) -%></th>
+        <th><%= Mes.t(:next_pm_time) -%></th>
+        <th><%= Mes.t(:life_start) -%></th>
+        <th><%= Mes.t(:life_expire) -%></th>
+        <th><%= Mes.t(:tool_processed_count) -%></th>
+        <th><%= Mes.t(:tool_processing_limit) -%></th>
+        <th><%= Mes.t(:unit_processed_count) -%></th>
+        <th><%= Mes.t(:unit_processing_limit) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tools.each do |tool| -%>
+      <tr id="<%= modeler_dom_id tool %>" data-hook="tool_row">
+        <td><%= tool.tool_code -%></td>
+        <td><%= tool.tool_part.name -%></td>
+        <td><%= tool.status -%></td>
+        <td><%= tool.last_calibration_time -%></td>
+        <td><%= tool.next_calibration_time -%></td>
+        <td><%= tool.last_pm_time -%></td>
+        <td><%= tool.next_pm_time -%></td>
+        <td><%= tool.life_start -%></td>
+        <td><%= tool.life_expire -%></td>
+        <td><%= tool.tool_processed_count -%></td>
+        <td><%= tool.tool_processing_limit -%></td>
+        <td><%= tool.unit_processed_count -%></td>
+        <td><%= tool.unit_processing_limit -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(tool, no_text: true) if policy(Mes::Tool).edit? %>
+          <%= link_to_delete(tool, no_text: true) if policy(Mes::Tool).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::Tool)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::Tool).create? %>!
+  </div>
+<% end -%>

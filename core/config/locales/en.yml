@@ -43,9 +43,12 @@ en:
     large_pm_frequency_seconds: Large PM Frequency Seconds
     last_calibration_time: Last Calibration Time
     last_large_pm_time: Last Large PM Time
+    last_pm_time: Last PM Time
     last_small_pm_time: Last Small PM Time
     leads: Leads
+    life_expire: Life Expire
     life_seconds: Life Seconds
+    life_start: Life Start
     lot_type: Lot Type
     lot_types: Lot Types
     lots_count: Lots Count
@@ -71,10 +74,12 @@ en:
     new_release_reason: New Release Reason
     new_reject_code: New Reject Code
     new_step_code: New Step Code
+    new_tool: New Tool
     new_tool_part: New Tool Part
     new_workflow: New Workflow
     next_calibration_time: Next Calibration Time
     next_large_pm_time: Next Large PM Time
+    next_pm_time: Next PM Time
     next_small_pm_time: Next Small PM Time
     no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
@@ -107,13 +112,20 @@ en:
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
     successfully_updated: ! '%{resource} has been successfully updated!'
+    tool: Tool
+    tools: Tools
+    tool_code: Tool Code
     tool_consume_limit: Tool Consume Limit
     tool_part: Tool Part
     tool_parts: Tool Parts
+    tool_processed_count: Tool Processed Count
+    tool_processing_limit: Tool Processing Limit
     tray_generation: Tray Generation
     tray_management: Tray Management
     units_count: Units Count
     unit_consume_limit: Unit Consume Limit
+    unit_processed_count: Unit Processed Count
+    unit_processing_limit: Unit Processing Limit
     wafer_size: Wafer Size
     workflow: Workflow
     workflows: Workflows
