@@ -77,7 +77,7 @@ class CreateMesTables < ActiveRecord::Migration
 
     create_table :mes_order_type_settings do |t|
       # select field
-      t.string  :order_type, null: false
+      t.integer :order_type_id
       t.integer :product_id
       # actural configure field
       t.integer :max_allowed_defect
@@ -85,12 +85,12 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :mes_order_type_settings, [:order_type, :product_id], name: 'idx_wo_type_pt_on_wo_type_sets'
+    add_index :mes_order_type_settings, [:order_type_id, :product_id], name: 'idx_wo_type_pt_on_wo_type_sets'
 
     create_table :mes_low_yield_settings do |t|
       # select field
       t.integer :step_code_id, null: false
-      t.string  :order_type
+      t.integer :order_type_id
       t.integer :product_id
       # actural configure field
       t.float   :lower_limit
@@ -102,7 +102,7 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :mes_low_yield_settings, [:order_type, :product_id], name: 'idx_wo_t_pt_on_low_yield_sets'
+    add_index :mes_low_yield_settings, [:order_type_id, :product_id], name: 'idx_wo_t_pt_on_low_yield_sets'
 
     create_table :mes_step_codes do |t|
       t.string  :name
@@ -155,7 +155,7 @@ class CreateMesTables < ActiveRecord::Migration
     create_table :mes_step_process_settings do |t|
       # select field
       t.integer :step_code_id, null: false
-      t.string  :order_type
+      t.integer :order_type_id
       t.integer :product_id
       # actural configure field
       t.integer :same_unit_max_defect_allowed
@@ -166,18 +166,18 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :mes_step_process_settings, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_settings', unique: true
+    add_index :mes_step_process_settings, [:step_code_id, :order_type_id, :product_id], name: 'idx_on_step_process_settings', unique: true
 
     create_table :mes_step_process_defects do |t|
       # select field
       t.integer :step_code_id, null: false
-      t.string  :order_type
+      t.integer :order_type_id
       t.integer :product_id
 
       t.timestamps
     end
 
-    add_index :mes_step_process_defects, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_defects', unique: true
+    add_index :mes_step_process_defects, [:step_code_id, :order_type_id, :product_id], name: 'idx_on_step_process_defects', unique: true
 
     create_table :mes_step_process_defect_codes do |t|
       t.integer :step_process_defect_id, null: false
@@ -197,13 +197,13 @@ class CreateMesTables < ActiveRecord::Migration
     create_table :mes_step_process_rejects do |t|
       # select field
       t.integer :step_code_id, null: false
-      t.string  :order_type
+      t.integer :order_type_id
       t.integer :product_id
 
       t.timestamps
     end
 
-    add_index :mes_step_process_rejects, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_rejects', unique: true
+    add_index :mes_step_process_rejects, [:step_code_id, :order_type_id, :product_id], name: 'idx_on_step_process_rejects', unique: true
 
     create_table :mes_step_process_reject_codes do |t|
       t.integer :step_process_reject_id, null: false
@@ -223,13 +223,13 @@ class CreateMesTables < ActiveRecord::Migration
     create_table :mes_step_process_bins do |t|
       # select field
       t.integer :step_code_id, null: false
-      t.string  :order_type
+      t.integer :order_type_id
       t.integer :product_id
 
       t.timestamps
     end
 
-    add_index :mes_step_process_bins, [:step_code_id, :order_type, :product_id], name: 'idx_on_step_process_bins', unique: true
+    add_index :mes_step_process_bins, [:step_code_id, :order_type_id, :product_id], name: 'idx_on_step_process_bins', unique: true
 
     create_table :mes_step_process_bin_codes do |t|
       t.integer :step_process_bin_id, null: false
@@ -242,7 +242,7 @@ class CreateMesTables < ActiveRecord::Migration
       # select field
       t.integer :step_code_id, null: false
       t.string :defect_code, null: false
-      t.string :order_type
+      t.integer :order_type_id
       t.integer :product_id
       # actural configure field
       t.integer :from_step_code_id, null: false
@@ -410,7 +410,7 @@ class CreateMesTables < ActiveRecord::Migration
 
     create_table :mes_work_orders do |t|
       t.string  :work_order_name
-      t.string  :order_type, null: false
+      t.integer :order_type_id
       t.integer :product_id, null: false
       # No need to store product_code in table, will resolve to product_id when create
       t.integer :order_qty
