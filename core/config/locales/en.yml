@@ -54,6 +54,8 @@ en:
     lots_count: Lots Count
     machine: Machine
     machines: Machines
+    machine_category: Machine Category
+    machine_categories: Machine Categories
     machine_code: Machine Code
     machine_required: Machine Required
     machine_type: Machine Type
@@ -68,6 +70,7 @@ en:
     new_hold_reason: New Hold Reason
     new_lot_type: New Lot Type
     new_machine: New Machine
+    new_machine_category: New Machine Category
     new_machine_type: New Machine Type
     new_order_type: New Order Type
     new_product: New Product

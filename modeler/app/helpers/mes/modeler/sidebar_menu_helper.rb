@@ -11,6 +11,7 @@ module Mes::Modeler::SidebarMenuHelper
   def sub_menu_equipment(text, id:, icon: nil)
     sub_menu_tree text, id, icon: icon do
       concat sidebar_menu_item(Mes.t(:machines), mes.modeler_machines_path) if policy(Mes::Machine).index?
+      concat sidebar_menu_item(Mes.t(:machine_categories), mes.modeler_machine_categories_path) if policy(Mes::MachineCategory).index?
       concat sidebar_menu_item(Mes.t(:machine_types), mes.modeler_machine_types_path) if policy(Mes::MachineType).index?
       concat sidebar_menu_item(Mes.t(:tools), mes.modeler_tools_path) if policy(Mes::Tool).index?
       concat sidebar_menu_item(Mes.t(:tool_parts), mes.modeler_tool_parts_path) if policy(Mes::ToolPart).index?
