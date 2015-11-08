@@ -7,7 +7,7 @@ Mes::Core::Engine.routes.draw do
               :machine_types, :machine_categories, :machines,
               :products, :certifications,
               :component_types, :components,
-              :tool_parts, :tools,
+              :tool_parts, :tool_categories, :tools,
               except: :show
   end
 end

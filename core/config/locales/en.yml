@@ -78,6 +78,7 @@ en:
     new_reject_code: New Reject Code
     new_step_code: New Step Code
     new_tool: New Tool
+    new_tool_category: New Tool Category
     new_tool_part: New Tool Part
     new_workflow: New Workflow
     next_calibration_time: Next Calibration Time
@@ -117,6 +118,8 @@ en:
     successfully_updated: ! '%{resource} has been successfully updated!'
     tool: Tool
     tools: Tools
+    tool_category: Tool Category
+    tool_categories: Tool Categories
     tool_code: Tool Code
     tool_consume_limit: Tool Consume Limit
     tool_part: Tool Part

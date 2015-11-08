@@ -58,7 +58,7 @@ class CreateMesTables < ActiveRecord::Migration
       t.string  :nand_vendor
       t.string  :nand_type
       t.integer :machine_category_id
-      t.string  :product_tool_category
+      t.integer :tool_category_id
       t.string  :product_component_category
       t.boolean :need_serial_label
       t.string  :internal_serial_number
@@ -382,6 +382,14 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :mes_tool_categories do |t|
+      t.string  :name
+      t.string  :description, limit: 2000
+      t.boolean :active, default: true
+
+      t.timestamps
+    end
+
     create_table :mes_tools do |t|
       t.string   :tool_code
       t.integer  :tool_part_id, null: false
@@ -406,7 +414,7 @@ class CreateMesTables < ActiveRecord::Migration
       # select field
       t.integer :step_code_id, null: false
       t.integer :machine_type_id, null: true
-      t.string  :product_tool_category
+      t.integer :tool_category_id
       # actural configure field
       t.integer :tool_part_id, null: false
       t.boolean :is_required_before_start, null: false, default: false
