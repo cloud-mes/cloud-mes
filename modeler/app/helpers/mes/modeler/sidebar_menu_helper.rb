@@ -3,6 +3,7 @@ module Mes::Modeler::SidebarMenuHelper
     sub_menu_tree text, id, icon: icon do
       concat sidebar_menu_item(Mes.t(:products), mes.modeler_products_path) if policy(Mes::Product).index?
       concat sidebar_menu_item(Mes.t(:components), mes.modeler_components_path) if policy(Mes::Component).index?
+      concat sidebar_menu_item(Mes.t(:component_categories), mes.modeler_component_categories_path) if policy(Mes::ComponentCategory).index?
       concat sidebar_menu_item(Mes.t(:component_types), mes.modeler_component_types_path) if policy(Mes::ComponentType).index?
       concat sidebar_menu_item(Mes.t(:workflows), mes.modeler_workflows_path) if policy(Mes::Workflow).index?
     end

@@ -59,7 +59,7 @@ class CreateMesTables < ActiveRecord::Migration
       t.string  :nand_type
       t.integer :machine_category_id
       t.integer :tool_category_id
-      t.string  :product_component_category
+      t.integer :component_category_id
       t.boolean :need_serial_label
       t.string  :internal_serial_number
       t.string  :external_ww_number
@@ -262,6 +262,14 @@ class CreateMesTables < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :mes_component_categories do |t|
+      t.string  :name
+      t.string  :description, limit: 2000
+      t.boolean :active, default: true
+
+      t.timestamps
+    end
+
     # Direct Materials / Indirect Materials are all components
     create_table :mes_components do |t|
       t.string   :component_code, null: false
@@ -309,7 +317,7 @@ class CreateMesTables < ActiveRecord::Migration
     create_table :mes_component_step_usage_setup do |t|
       # select field
       t.integer :step_code_id, null: false
-      t.string  :product_componenet_category
+      t.integer :component_category_id
       t.date    :from_date, null: false
       t.date    :to_date
       # actural configure field

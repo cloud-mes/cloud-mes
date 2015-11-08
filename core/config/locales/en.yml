@@ -19,6 +19,8 @@ en:
     certifications: Certifications
     component: Component
     components: Components
+    component_category: Component Category
+    component_categories: Component Categories
     component_code: Component Code
     component_type: Component Type
     component_types: Component Types
@@ -40,6 +42,7 @@ en:
     for_inline_rework: For Inline Rework
     hold_reason: Hold Reason
     hold_reasons: Hold Reasons
+    inactive: Inactive
     large_pm_frequency_seconds: Large PM Frequency Seconds
     last_calibration_time: Last Calibration Time
     last_large_pm_time: Last Large PM Time
@@ -64,6 +67,7 @@ en:
     name: Name
     new_bin_code: New Bin Code
     new_component: New Component
+    new_component_category: New Component Category
     new_component_type: New Component Type
     new_certification: New Certification
     new_factory: New Factory
