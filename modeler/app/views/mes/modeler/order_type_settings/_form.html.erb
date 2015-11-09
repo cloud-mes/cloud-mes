@@ -1,0 +1,16 @@
+<div data-hook="modeler_order_type_setting_form_fields">
+  <%= f.field_container :product, :class => ['form-group'] do %>
+    <%= f.label :product_id, Mes.t(:product) %>
+    <%= f.select :product_id, options_for_select(Mes::Product.pluck(:product_code, :id), @order_type_setting.product_id), { include_blank: true }, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :order_type, :class => ['form-group'] do %>
+    <%= f.label :order_type_id, Mes.t(:order_type) %><br>
+    <%= f.select :order_type_id, options_for_select(Mes::OrderType.pluck(:name, :id), @order_type_setting.order_type_id), { include_blank: true }, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :max_allowed_defect, :class => ['form-group'] do %>
+    <%= f.label :max_allowed_defect, Mes.t(:max_allowed_defect) %><br>
+    <%= f.text_field :max_allowed_defect, :class => 'form-control' %>
+  <% end %>
+</div>

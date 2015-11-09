@@ -1,0 +1,38 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::OrderTypeSetting) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_order_type_setting), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::OrderTypeSetting).create? -%>
+
+<% if @order_type_settings.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="certification_header">
+        <th><%= Mes.t(:product) -%></th>
+        <th><%= Mes.t(:order_type) -%></th>
+        <th><%= Mes.t(:max_allowed_defect) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_type_settings.each do |order_type_setting| -%>
+      <tr id="<%= modeler_dom_id order_type_setting %>" data-hook="certification_row">
+        <td><%= order_type_setting.product.try :product_code -%></td>
+        <td><%= order_type_setting.order_type.try :name -%></td>
+        <td><%= order_type_setting.max_allowed_defect -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(order_type_setting, no_text: true) if policy(Mes::OrderTypeSetting).edit? %>
+          <%= link_to_delete(order_type_setting, no_text: true) if policy(Mes::OrderTypeSetting).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::OrderTypeSetting)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::OrderTypeSetting).create? %>!
+  </div>
+<% end -%>

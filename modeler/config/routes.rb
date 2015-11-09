@@ -9,5 +9,8 @@ Mes::Core::Engine.routes.draw do
               :component_types, :component_categories, :components,
               :tool_parts, :tool_categories, :tools,
               except: :show
+
+    resources :order_type_settings,
+              except: :show
   end
 end

@@ -34,6 +34,12 @@ module Mes::Modeler::SidebarMenuHelper
     end
   end
 
+  def sub_menu_setting(text, id:, icon: nil)
+    sub_menu_tree text, id, icon: icon do
+      concat sidebar_menu_item(Mes.t(:order_type_settings), mes.modeler_order_type_settings_path) if policy(Mes::OrderTypeSetting).index?
+    end
+  end
+
   private
 
   def sub_menu_tree(text, id, icon: nil)
