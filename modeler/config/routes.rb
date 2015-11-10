@@ -10,7 +10,7 @@ Mes::Core::Engine.routes.draw do
               :tool_parts, :tool_categories, :tools,
               except: :show
 
-    resources :order_type_settings,
+    resources :order_type_settings, :low_yield_settings,
               except: :show
   end
 end

@@ -20,7 +20,7 @@
     </thead>
     <tbody>
       <% @machine_types.each do |machine_type| -%>
-      <tr id="<%= modeler_dom_id machine_type %>" data-hook="lot_type_row">
+      <tr id="<%= modeler_dom_id machine_type %>" data-hook="machine_type_row">
         <td><%= machine_type.name %></td>
         <td><%= machine_type.description %></td>
         <td><%= machine_type.calibration_frequency_seconds %></td>

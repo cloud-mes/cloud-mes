@@ -9,7 +9,7 @@
 <% if @order_type_settings.any? -%>
   <table class="table">
     <thead>
-      <tr data-hook="certification_header">
+      <tr data-hook="order_type_setting_header">
         <th><%= Mes.t(:product) -%></th>
         <th><%= Mes.t(:order_type) -%></th>
         <th><%= Mes.t(:max_allowed_defect) -%></th>
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <% @order_type_settings.each do |order_type_setting| -%>
-      <tr id="<%= modeler_dom_id order_type_setting %>" data-hook="certification_row">
+      <tr id="<%= modeler_dom_id order_type_setting %>" data-hook="order_type_setting_row">
         <td><%= order_type_setting.product.try :product_code -%></td>
         <td><%= order_type_setting.order_type.try :name -%></td>
         <td><%= order_type_setting.max_allowed_defect -%></td>

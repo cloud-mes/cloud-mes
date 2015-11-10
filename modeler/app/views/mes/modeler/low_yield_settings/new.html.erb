@@ -1,0 +1,12 @@
+<% content_for :page_title do %>
+  <%= Mes.t(:new_low_yield_setting) %>
+<% end %>
+
+<%= render :partial => 'mes/modeler/shared/error_messages', :locals => { :target => @low_yield_setting } %>
+
+<%= form_for [:modeler, @low_yield_setting] do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'mes/modeler/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

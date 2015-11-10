@@ -1,0 +1,46 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::LowYieldSetting) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_low_yield_setting), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::LowYieldSetting).create? -%>
+
+<% if @low_yield_settings.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="low_yield_setting_header">
+        <th><%= Mes.t(:step_code) -%></th>
+        <th><%= Mes.t(:product) -%></th>
+        <th><%= Mes.t(:order_type) -%></th>
+        <th><%= Mes.t(:lower_limit) -%></th>
+        <th><%= Mes.t(:upper_limit) -%></th>
+        <th><%= Mes.t(:threshold_in_pass_number) -%></th>
+        <th><%= Mes.t(:notification_email_group) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @low_yield_settings.each do |low_yield_setting| -%>
+      <tr id="<%= modeler_dom_id low_yield_setting %>" data-hook="low_yield_setting_row">
+        <td><%= low_yield_setting.step_code.name -%></td>
+        <td><%= low_yield_setting.product.try :product_code -%></td>
+        <td><%= low_yield_setting.order_type.try :name -%></td>
+        <td><%= low_yield_setting.lower_limit -%></td>
+        <td><%= low_yield_setting.upper_limit -%></td>
+        <td><%= low_yield_setting.threshold_in_pass_number -%></td>
+        <td><%= low_yield_setting.notification_email_group -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(low_yield_setting, no_text: true) if policy(Mes::LowYieldSetting).edit? %>
+          <%= link_to_delete(low_yield_setting, no_text: true) if policy(Mes::LowYieldSetting).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::LowYieldSetting)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::LowYieldSetting).create? %>!
+  </div>
+<% end -%>

@@ -54,6 +54,9 @@ en:
     life_start: Life Start
     lot_type: Lot Type
     lot_types: Lot Types
+    low_yield_setting: Low Yield Setting
+    low_yield_settings: Low Yield Settings
+    lower_limit: Lower Limit
     lots_count: Lots Count
     machine: Machine
     machines: Machines
@@ -73,6 +76,7 @@ en:
     new_factory: New Factory
     new_hold_reason: New Hold Reason
     new_lot_type: New Lot Type
+    new_low_yield_setting: New Low Yield Setting
     new_machine: New Machine
     new_machine_category: New Machine Category
     new_machine_type: New Machine Type
@@ -93,6 +97,7 @@ en:
     no_resource_found: 'No %{resource} found'
     not_found: ! '%{resource} is not found'
     notes: Notes
+    notification_email_group: Notification Email Group
     max_allowed_defect: Max Allowed Defect
     or: or
     order_type: Order Type
@@ -125,6 +130,7 @@ en:
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
     successfully_updated: ! '%{resource} has been successfully updated!'
+    threshold_in_pass_number: Threshold in Pass Number
     tool: Tool
     tools: Tools
     tool_category: Tool Category
@@ -137,6 +143,7 @@ en:
     tool_processing_limit: Tool Processing Limit
     tray_generation: Tray Generation
     tray_management: Tray Management
+    upper_limit: Upper Limit
     units_count: Units Count
     unit_consume_limit: Unit Consume Limit
     unit_processed_count: Unit Processed Count
