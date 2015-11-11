@@ -11,6 +11,7 @@ Mes::Core::Engine.routes.draw do
               except: :show
 
     resources :order_type_settings, :low_yield_settings,
+              :step_process_settings,
               except: :show
   end
 end

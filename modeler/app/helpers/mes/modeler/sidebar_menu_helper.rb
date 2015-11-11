@@ -38,6 +38,7 @@ module Mes::Modeler::SidebarMenuHelper
     sub_menu_tree text, id, icon: icon do
       concat sidebar_menu_item(Mes.t(:order_type_settings), mes.modeler_order_type_settings_path) if policy(Mes::OrderTypeSetting).index?
       concat sidebar_menu_item(Mes.t(:low_yield_settings), mes.modeler_low_yield_settings_path) if policy(Mes::LowYieldSetting).index?
+      concat sidebar_menu_item(Mes.t(:step_process_settings), mes.modeler_step_process_settings_path) if policy(Mes::StepProcessSetting).index?
     end
   end
 

@@ -160,7 +160,7 @@ class CreateMesTables < ActiveRecord::Migration
       # actural configure field
       t.integer :same_unit_max_defect_allowed
       t.integer :future_rework_step_code_id
-      t.boolean :req_first_article_inspection # checked at move, hold if require
+      t.boolean :require_first_article_inspection # checked at move, hold if require
       t.integer :unit_sample_percent
 
       t.timestamps

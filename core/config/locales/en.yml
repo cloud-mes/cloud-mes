@@ -40,6 +40,7 @@ en:
     factory_name: Factory Name
     floor_life_seconds: Floor Life Seconds
     for_inline_rework: For Inline Rework
+    future_rework_step_code: Future Rework Step Code
     hold_reason: Hold Reason
     hold_reasons: Hold Reasons
     inactive: Inactive
@@ -86,6 +87,7 @@ en:
     new_release_reason: New Release Reason
     new_reject_code: New Reject Code
     new_step_code: New Step Code
+    new_step_process_setting: New Step Process Setting
     new_tool: New Tool
     new_tool_category: New Tool Category
     new_tool_part: New Tool Part
@@ -115,17 +117,21 @@ en:
     reject_code: Reject Code
     reject_codes: Reject Codes
     reject_type: Reject Type
+    require_first_article_inspection: Require First Article Inspection
     sap_location: SAP Location
     sequence: Sequence
     settings: Settings
     shelf_life_seconds: Shelf Life Seconds
     small_pm_frequency_seconds: Small PM Frequency Seconds
+    same_unit_max_defect_allowed: Same Unit Max Defect Allowed
     state: State
     status: Status
     step: Step
     step_code: Step Code
     step_codes: Step Codes
     step_hold_count: Step Hold Count
+    step_process_setting: Step Process Setting
+    step_process_settings: Step Process Settings
     step_type: Step Type
     successfully_created: ! '%{resource} has been successfully created!'
     successfully_removed: ! '%{resource} has been successfully removed!'
@@ -148,6 +154,7 @@ en:
     unit_consume_limit: Unit Consume Limit
     unit_processed_count: Unit Processed Count
     unit_processing_limit: Unit Processing Limit
+    unit_sample_percent: Unit Sample Percent
     wafer_size: Wafer Size
     workflow: Workflow
     workflows: Workflows

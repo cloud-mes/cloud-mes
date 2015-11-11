@@ -1,0 +1,46 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::StepProcessSetting) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_step_process_setting), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::StepProcessSetting).create? -%>
+
+<% if @step_process_settings.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="step_process_setting_header">
+        <th><%= Mes.t(:step_code) -%></th>
+        <th><%= Mes.t(:product) -%></th>
+        <th><%= Mes.t(:order_type) -%></th>
+        <th><%= Mes.t(:same_unit_max_defect_allowed) -%></th>
+        <th><%= Mes.t(:future_rework_step_code) -%></th>
+        <th><%= Mes.t(:require_first_article_inspection) -%></th>
+        <th><%= Mes.t(:unit_sample_percent) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @step_process_settings.each do |step_process_setting| -%>
+      <tr id="<%= modeler_dom_id step_process_setting %>" data-hook="step_process_setting_row">
+        <td><%= step_process_setting.step_code.name -%></td>
+        <td><%= step_process_setting.product.try :product_code -%></td>
+        <td><%= step_process_setting.order_type.try :name -%></td>
+        <td><%= step_process_setting.same_unit_max_defect_allowed -%></td>
+        <td><%= step_process_setting.future_rework_step_code.try :name -%></td>
+        <td><%= step_process_setting.require_first_article_inspection -%></td>
+        <td><%= step_process_setting.unit_sample_percent -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(step_process_setting, no_text: true) if policy(Mes::StepProcessSetting).edit? %>
+          <%= link_to_delete(step_process_setting, no_text: true) if policy(Mes::StepProcessSetting).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::StepProcessSetting)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::StepProcessSetting).create? %>!
+  </div>
+<% end -%>
