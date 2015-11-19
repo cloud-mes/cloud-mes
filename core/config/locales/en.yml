@@ -87,6 +87,7 @@ en:
     new_release_reason: New Release Reason
     new_reject_code: New Reject Code
     new_step_code: New Step Code
+    new_step_process_reject: New Step Process Reject
     new_step_process_setting: New Step Process Setting
     new_tool: New Tool
     new_tool_category: New Tool Category
@@ -130,6 +131,8 @@ en:
     step_code: Step Code
     step_codes: Step Codes
     step_hold_count: Step Hold Count
+    step_process_reject: Step Process Reject
+    step_process_rejects: Step Process Rejects
     step_process_setting: Step Process Setting
     step_process_settings: Step Process Settings
     step_type: Step Type

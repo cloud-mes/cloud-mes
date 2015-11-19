@@ -1,0 +1,40 @@
+<% content_for :page_title do -%>
+  <%= plural_resource_name(Mes::StepProcessReject) -%>
+<% end -%>
+
+<% content_for :page_actions do -%>
+  <%= button_link_to Mes.t(:new_step_process_reject), new_object_url, class: 'btn-success', icon: 'plus' %>
+<% end if policy(Mes::StepProcessReject).create? -%>
+
+<% if @step_process_rejects.any? -%>
+  <table class="table">
+    <thead>
+      <tr data-hook="step_process_reject_header">
+        <th><%= Mes.t(:step_code) -%></th>
+        <th><%= Mes.t(:product) -%></th>
+        <th><%= Mes.t(:order_type) -%></th>
+        <th><%= Mes.t(:reject_codes) -%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @step_process_rejects.each do |step_process_reject| -%>
+      <tr id="<%= modeler_dom_id step_process_reject %>" data-hook="step_process_reject_row">
+        <td><%= step_process_reject.step_code.name -%></td>
+        <td><%= step_process_reject.product.try :product_code -%></td>
+        <td><%= step_process_reject.order_type.try :name -%></td>
+        <td><%= step_process_reject.step_process_reject_codes.map(&:reject_code).join(', ') -%></td>
+        <td class="actions text-right">
+          <%= link_to_edit(step_process_reject, no_text: true) if policy(Mes::StepProcessReject).edit? %>
+          <%= link_to_delete(step_process_reject, no_text: true) if policy(Mes::StepProcessReject).destroy? %>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% else -%>
+  <div class="alert alert-info no-objects-found">
+    <%= Mes.t(:no_resource_found, resource: plural_resource_name(Mes::StepProcessReject)) %>,
+    <%= link_to(Mes.t(:add_one), new_object_url) if policy(Mes::StepProcessReject).create? %>!
+  </div>
+<% end -%>

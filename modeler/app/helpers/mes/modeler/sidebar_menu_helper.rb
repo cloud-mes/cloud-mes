@@ -39,6 +39,7 @@ module Mes::Modeler::SidebarMenuHelper
       concat sidebar_menu_item(Mes.t(:order_type_settings), mes.modeler_order_type_settings_path) if policy(Mes::OrderTypeSetting).index?
       concat sidebar_menu_item(Mes.t(:low_yield_settings), mes.modeler_low_yield_settings_path) if policy(Mes::LowYieldSetting).index?
       concat sidebar_menu_item(Mes.t(:step_process_settings), mes.modeler_step_process_settings_path) if policy(Mes::StepProcessSetting).index?
+      concat sidebar_menu_item(Mes.t(:step_process_rejects), mes.modeler_step_process_rejects_path) if policy(Mes::StepProcessReject).index?
     end
   end
 
