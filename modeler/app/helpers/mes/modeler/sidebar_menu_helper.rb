@@ -1,5 +1,5 @@
 module Mes::Modeler::SidebarMenuHelper
-  def sub_menu_product_model(text, id:, icon: nil)
+  def sub_menu_pn_model(text, id:, icon: nil)
     sub_menu_tree text, id, icon: icon do
       concat sidebar_menu_item(Mes.t(:products), mes.modeler_products_path) if policy(Mes::Product).index?
       concat sidebar_menu_item(Mes.t(:components), mes.modeler_components_path) if policy(Mes::Component).index?
@@ -20,7 +20,7 @@ module Mes::Modeler::SidebarMenuHelper
     end
   end
 
-  def sub_menu_configuration(text, id:, icon: nil)
+  def sub_menu_configure(text, id:, icon: nil)
     sub_menu_tree text, id, icon: icon do
       concat sidebar_menu_item(Mes.t(:factories), mes.modeler_factories_path) if policy(Mes::Factory).index?
       concat sidebar_menu_item(Mes.t(:lot_types), mes.modeler_lot_types_path) if policy(Mes::LotType).index?

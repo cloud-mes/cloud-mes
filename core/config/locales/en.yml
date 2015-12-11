@@ -24,7 +24,7 @@ en:
     component_code: Component Code
     component_type: Component Type
     component_types: Component Types
-    configurations: Configurations
+    configure: Configure
     delete: Delete
     description: Description
     direct_material: Direct Material
@@ -108,10 +108,10 @@ en:
     order_type_setting: Order Type Setting
     order_type_settings: Order Type Settings
     pm_frequency_seconds: PM Frequency Seconds
+    pn_model: PN Model
     product: Product
     products: Products
     product_code: Product Code
-    product_model: Product Model
     quantity_per_container: Quantity Per Container
     release_reason: Release Reason
     release_reasons: Release Reasons
