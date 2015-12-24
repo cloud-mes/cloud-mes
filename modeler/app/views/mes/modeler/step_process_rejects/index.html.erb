@@ -23,7 +23,7 @@
         <td><%= step_process_reject.step_code.name -%></td>
         <td><%= step_process_reject.product.try :product_code -%></td>
         <td><%= step_process_reject.order_type.try :name -%></td>
-        <td><%= step_process_reject.step_process_reject_codes.map(&:reject_code).join(', ') -%></td>
+        <td><%= step_process_reject.reject_codes.join(', ') -%></td>
         <td class="actions text-right">
           <%= link_to_edit(step_process_reject, no_text: true) if policy(Mes::StepProcessReject).edit? %>
           <%= link_to_delete(step_process_reject, no_text: true) if policy(Mes::StepProcessReject).destroy? %>

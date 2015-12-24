@@ -13,4 +13,9 @@
     <%= f.label :product_id, Mes.t(:product) %>
     <%= f.select :product_id, options_for_select(Mes::Product.pluck(:product_code, :id), @step_process_reject.product_id), { include_blank: true }, class: 'form-control' %>
   <% end %>
+
+  <%= f.field_container :reject_codes, :class => ['form-group'] do %>
+    <%= f.label :reject_codes, Mes.t(:reject_codes) %>
+    <%= f.select :reject_codes, Mes::RejectCode.pluck(:reject_code).to_a, {}, class: 'form-control select2', multiple: 'multiple' -%>
+  <% end %>
 </div>
