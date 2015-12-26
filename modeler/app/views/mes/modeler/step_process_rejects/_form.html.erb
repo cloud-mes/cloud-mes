@@ -1,7 +1,7 @@
 <div data-hook="modeler_step_process_reject_form_fields">
   <%= f.field_container :step_code, :class => ['form-group'] do %>
     <%= f.label :step_code_id, Mes.t(:step_code) %>
-    <%= f.select :step_code_id, options_for_select(Mes::StepCode.pluck(:name, :id), @step_process_reject.step_code_id), { include_blank: true }, class: 'form-control' %>
+    <%= f.select :step_code_id, options_for_select(Mes::StepCode.all.collect {|v| [v.full_name, v.id]}, @step_process_reject.step_code_id), { include_blank: true }, class: 'form-control' %>
   <% end %>
 
   <%= f.field_container :order_type, :class => ['form-group'] do %>

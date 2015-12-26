@@ -1,7 +1,7 @@
 <div data-hook="modeler_low_yield_setting_form_fields">
   <%= f.field_container :step_code, :class => ['form-group'] do %>
     <%= f.label :step_code_id, Mes.t(:step_code) %>
-    <%= f.select :step_code_id, options_for_select(Mes::StepCode.pluck(:name, :id), @low_yield_setting.step_code_id), { include_blank: true }, class: 'form-control' %>
+    <%= f.select :step_code_id, options_for_select(Mes::StepCode.all.collect {|v| [v.full_name, v.id]}, @low_yield_setting.step_code_id), { include_blank: true }, class: 'form-control' %>
   <% end %>
 
   <%= f.field_container :product, :class => ['form-group'] do %>
