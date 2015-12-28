@@ -1,1 +1,5 @@
-Cloud-MES project is initial launched at 4/1/2012, but it is not a fool day project. :-)
+Cloud-MES [![Gem Version][version-badge]][rubygems] 
+=========
+
+[version-badge]: https://badge.fury.io/rb/cloud-mes.svg
+[rubygems]: https://rubygems.org/gems/cloud-mes
