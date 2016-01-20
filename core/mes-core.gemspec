@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,lib}/**/*', 'Rakefile', 'LICENSE.MD']
   s.require_path = 'lib'
 
-  s.add_dependency 'pundit', '~> 1.0.1'
+  s.add_dependency 'pundit', '~> 1.0'
 
   s.add_development_dependency 'sqlite3'
 end
