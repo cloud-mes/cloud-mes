@@ -1,5 +1,5 @@
-AllCops:
-  RunRailsCops: true
+Rails:
+  Enabled: true
   Exclude:
     - db/schema.rb
 
@@ -26,9 +26,6 @@ Metrics/MethodLength:
 
 Style/IndentationWidth:
   Width: 2
-
-Style/SingleSpaceBeforeFirstArg:
-  Enabled: false
 
 Style/UnneededPercentQ:
   Enabled: false
